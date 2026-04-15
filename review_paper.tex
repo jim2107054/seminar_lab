@@ -25,7 +25,7 @@
 
 % ── Line spacing ─────────────────────────────────────────────
 \usepackage{setspace}
-\setstretch{1.5}
+\setstretch{1.15}
 
 % ── Section heading style ────────────────────────────────────
 \usepackage{titlesec}
@@ -61,6 +61,7 @@
 % ── Graphics & figures ───────────────────────────────────────
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{placeins}
 \usepackage{caption}
 \usepackage{subcaption}
 \captionsetup{font=small, labelfont=bf, justification=centering}
@@ -127,7 +128,7 @@
 
 % ── Paragraph indentation ────────────────────────────────────
 \setlength{\parindent}{1.5em}
-\setlength{\parskip}{0pt}
+\setlength{\parskip}{3pt plus 1pt minus 1pt}
 
 % ── Abstract styling ─────────────────────────────────────────
 \usepackage{abstract}
@@ -232,6 +233,33 @@ April, 2026}
 \newpage
 \thispagestyle{empty}
 \tableofcontents
+
+\vspace{1cm}
+
+% ─────────────────────────────────────────────────────────────
+%   SOURCE TABLE
+% ─────────────────────────────────────────────────────────────
+\section*{Source Table}
+\addcontentsline{toc}{section}{Source Table}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.4}
+\small
+\begin{tabular}{|c|p{7.5cm}|p{3.5cm}|c|}
+\hline
+\textbf{Serial No.} & \textbf{Paper Title} & \textbf{Source (URL)} & \textbf{Publication Date} \\
+\hline
+\hline
+1 & IBISAgent: Reinforcing Pixel-Level Visual Reasoning in MLLMs for Universal Biomedical Object Referring and Segmentation & \url{https://arxiv.org/abs/2601.03054} & Feb 2026 \\
+\hline
+2 & MEDVISTAGYM: A Scalable Training Environment for Thinking with Medical Images via Tool-Integrated Reinforcement Learning & \url{https://arxiv.org/abs/2601.07107} & Jan 2026 \\
+\hline
+3 & MedSAM-Agent: Empowering Interactive Medical Image Segmentation with Multi-turn Agentic Reinforcement Learning & \url{https://arxiv.org/abs/2602.03320} & Feb 2026 \\
+\hline
+\end{tabular}
+\end{table}
+
 \newpage
 
 % ─────────────────────────────────────────────────────────────
@@ -332,10 +360,10 @@ illuminates the open problems that the field must address.
 
 The remainder of this review proceeds as follows.  Section~\ref{sec:background}
 situates the three systems within the broader landscape of related work.
-Section~\ref{sec:technical} presents a detailed technical analysis of each framework.
-Section~\ref{sec:comparison} provides a structured comparative evaluation.
-Section~\ref{sec:synthesis} synthesizes cross-cutting insights and identifies research
-directions.  Section~\ref{sec:conclusion} concludes.
+Section~\ref{sec:methodology} presents a detailed methodology of each framework.
+Section~\ref{sec:discussion} provides a structured discussion.
+Section~\ref{sec:synthesis} provides an integrative synthesis and identifies future
+frontiers.  Section~\ref{sec:conclusion} concludes.
 
 % ─────────────────────────────────────────────────────────────
 \section{Background and Related Work}
@@ -402,8 +430,8 @@ tool use in clinical visual reasoning requires learning disciplined interaction
 policies, not merely having access to tools.
 
 % ─────────────────────────────────────────────────────────────
-\section{Technical Analysis of the Three Systems}
-\label{sec:technical}
+\section{Methodology}
+\label{sec:methodology}
 % ─────────────────────────────────────────────────────────────
 
 \subsection{IBISAgent: Iterative Biomedical Interactive Segmentation Agent}
@@ -730,7 +758,7 @@ SAM2 backends at inference time.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.92\linewidth]{fig8.png}
+  \includegraphics[width=0.8\linewidth]{fig8.png}
   \caption{Multi-turn interaction analysis for MedSAM-Agent across four datasets.
    The blue line shows mean IoU per turn; horizontal lines mark single-turn
    ground-truth baselines (box and centroid point).  Green/red/grey bar segments
@@ -740,8 +768,8 @@ SAM2 backends at inference time.
 \end{figure}
 
 % ─────────────────────────────────────────────────────────────
-\section{Comparative Analysis}
-\label{sec:comparison}
+\section{Discussion}
+\label{sec:discussion}
 % ─────────────────────────────────────────────────────────────
 
 \subsection{Summary Comparison}
@@ -754,55 +782,61 @@ training approach, and reported benchmark performance.
 % Plain booktabs style — no colour, no colortbl.
 % Exactly the style used in top-tier venues (CVPR, NeurIPS, etc.)
 % ────────────────────────────────────────────────────────────
-\begin{table}[H]
+\begin{table}[htbp]
 \centering
 \caption{Comparison of agentic segmentation systems and representative baselines.
 Bold entries indicate the three systems under review. ``--'' denotes not applicable.}
 \label{tab:comparison}
-\renewcommand{\arraystretch}{1.3}
-\small
-\begin{tabular}{
-p{3.2cm}
-p{2.5cm}
-p{2cm}
-p{2.2cm}
-c c c}
+\renewcommand{\arraystretch}{1.25}
+\footnotesize
+\begin{tabular}{@{}p{2.8cm}p{2.2cm}p{1.7cm}p{1.9cm}p{1.5cm}p{1.4cm}c@{}}
 \toprule
 \textbf{Method} & \textbf{Action Space} & \textbf{Interaction} & \textbf{Training}
 & \textbf{In-Domain} & \textbf{OOD} & \textbf{Params} \\
 \midrule
-
-\multicolumn{7}{l}{\textit{Reviewed systems (agentic, multi-turn)}} \\
+\addlinespace[0.4ex]
+\multicolumn{7}{@{}l}{\textit{Reviewed systems (agentic, multi-turn)}} \\
+\addlinespace[0.25ex]
 
 \textbf{IBISAgent}~\cite{ibisagent}
 & Click points & MDP & SFT + GRPO
 & 85.58\% IoU & 72.09\% IoU & 7B \\
+\addlinespace[0.15ex]
 
 \textbf{MedSAM-Agent}~\cite{medsam_agent}
 & Box + points & MDP & SFT + GRPO
 & 0.794 Dice & 0.720 Dice & 8B \\
+\addlinespace[0.15ex]
 
 \textbf{MedVistaGym}~\cite{medvistagym}
 & Tool API calls & POMDP & SFT + GRPO
 & 81.36\% Acc. & 56.43\% Acc. & 8B \\
+\addlinespace[0.4ex]
 
 \midrule
-\multicolumn{7}{l}{\textit{Baselines (implicit-token, single-pass)}} \\
+\addlinespace[0.4ex]
+\multicolumn{7}{@{}l}{\textit{Baselines (implicit-token, single-pass)}} \\
+\addlinespace[0.25ex]
 
 LISA~\cite{lisa}
 & \texttt{<SEG>} token & Single-pass & SFT
 & Low & Very low & 7B \\
+\addlinespace[0.15ex]
 
 UniBiomed~\cite{unibiomed}
 & \texttt{<SEG>} token & Single-pass & SFT
 & 0.776 Dice & 0.317 Dice & 1B \\
+\addlinespace[0.4ex]
 
 \midrule
-\multicolumn{7}{l}{\textit{Baselines (interactive, single-turn)}} \\
+\addlinespace[0.4ex]
+\multicolumn{7}{@{}l}{\textit{Baselines (interactive, single-turn)}} \\
+\addlinespace[0.25ex]
 
 MedSAM2~\cite{medsam2}
 & Bounding box & Single-turn & None
 & 82.07\% IoU & 71.30\% IoU & -- \\
+\addlinespace[0.15ex]
 
 MMedAgent~\cite{mmedagent}
 & Tool calls & Single-turn & SFT
@@ -812,40 +846,43 @@ MMedAgent~\cite{mmedagent}
 \end{tabular}
 \end{table}
 
+\FloatBarrier
+\vspace{1cm}
+
 \subsection{Dataset Scale and Modality Coverage}
 
 Table~\ref{tab:datasets} summarises the dataset scope of each system.
 
+\vspace{0.4cm}
+
 % ── TABLE 2 ─────────────────────────────────────────────────
-\begin{table}[H]
+\begin{table}[htbp]
 \centering
 \caption{Dataset characteristics for each reviewed system.
 SFT = supervised fine-tuning stage; RL = reinforcement learning stage.}
 \label{tab:datasets}
-\renewcommand{\arraystretch}{1.3}
-\small
-\begin{tabular}{
-p{3cm}
-p{4.5cm}
-c
-c
-c}
+\renewcommand{\arraystretch}{1.25}
+\footnotesize
+\begin{tabular}{@{}p{2.8cm}p{4cm}p{1.9cm}cp{3cm}@{}}
 \toprule
 \textbf{System} & \textbf{Primary Dataset(s)} & \textbf{Image Scale}
 & \textbf{Modalities} & \textbf{Training Samples} \\
 \midrule
+\addlinespace[0.25ex]
 
 IBISAgent~\cite{ibisagent}
 & BioMedParseData~\cite{biomedparse}
 & 3.4M images
 & 9
 & 456K SFT + 888K RL \\
+\addlinespace[0.15ex]
 
 MedSAM-Agent~\cite{medsam_agent}
 & 21 open-source datasets
 & 419K images
 & 6
 & 449K SFT + 9K RL \\
+\addlinespace[0.15ex]
 
 MedVistaGym~\cite{medvistagym}
 & PathVQA, SLAKE, VQA-RAD + OOD
@@ -922,7 +959,7 @@ substantially reduce unnecessary interaction steps.  MedVistaGym/MedVista-R1 lim
 tool calls to a maximum of 6 per query.
 
 % ─────────────────────────────────────────────────────────────
-\section{Synthesis: Cross-Cutting Themes and Open Problems}
+\section{Integrative Synthesis and Future Frontiers}
 \label{sec:synthesis}
 % ─────────────────────────────────────────────────────────────
 
