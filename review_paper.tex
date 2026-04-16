@@ -10,55 +10,34 @@
 
 \documentclass[12pt, a4paper]{article}
 
-% ── Encoding & fonts ─────────────────────────────────────────
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{mathptmx}          % Times New Roman
+\usepackage{mathptmx}
 \usepackage{microtype}
 
-% ── Page geometry ────────────────────────────────────────────
-\usepackage[
-  a4paper,
-  top=2.54cm, bottom=2.54cm,
-  left=2.54cm, right=2.54cm
-]{geometry}
+\usepackage[a4paper, top=2.54cm, bottom=2.54cm, left=2.54cm, right=2.54cm]{geometry}
 
-% ── Line spacing ─────────────────────────────────────────────
 \usepackage{setspace}
 \setstretch{1.15}
 
-% ── Section heading style ────────────────────────────────────
 \usepackage{titlesec}
-\titleformat{\section}      {\large\bfseries}         {\thesection.}      {0.5em}{}
-\titleformat{\subsection}   {\normalsize\bfseries\itshape}{\thesubsection} {0.5em}{}
-\titleformat{\subsubsection}{\normalsize\bfseries}    {\thesubsubsection} {0.5em}{}
+\titleformat{\section}      {\large\bfseries}              {\thesection.}      {0.5em}{}
+\titleformat{\subsection}   {\normalsize\bfseries\itshape}  {\thesubsection}    {0.5em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}          {\thesubsubsection} {0.5em}{}
 \titlespacing*{\section}      {0pt}{14pt}{6pt}
 \titlespacing*{\subsection}   {0pt}{10pt}{4pt}
 \titlespacing*{\subsubsection}{0pt}{8pt}{3pt}
 
-% ── Headers / footers ────────────────────────────────────────
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
 \renewcommand{\headrulewidth}{0.4pt}
 \fancyhead[L]{\small\itshape Agentic Systems for Medical Image Segmentation: A Survey}
 \fancyhead[R]{\small\thepage}
-
-% ── Fix headheight warning ───────────────────────────────────
 \setlength{\headheight}{15pt}
 
-% ── Hyperlinks ───────────────────────────────────────────────
-\usepackage[
-  colorlinks=true,
-  linkcolor=black,
-  citecolor=black,
-  urlcolor=blue
-]{hyperref}
-
-% ── Math ─────────────────────────────────────────────────────
+\usepackage[colorlinks=true, linkcolor=black, citecolor=black, urlcolor=blue]{hyperref}
 \usepackage{amsmath, amssymb}
-
-% ── Graphics & figures ───────────────────────────────────────
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{placeins}
@@ -66,15 +45,11 @@
 \usepackage{subcaption}
 \captionsetup{font=small, labelfont=bf, justification=centering}
 
-% ── Tables — academic style only ────────────────────────────
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{multirow}
 \usepackage{array}
 \usepackage{xcolor}
-% No colortbl — plain booktabs style, no row colours
-
-% ── Image-placeholder styling ────────────────────────────────
 \usepackage{tcolorbox}
 \usepackage{pifont}
 
@@ -85,116 +60,71 @@
 \definecolor{headernavy}{RGB}{31,56,100}
 
 \newcommand{\imagePlaceholder}[5]{%
-  \begin{figure}[H]
-    \centering
-    \begin{tcolorbox}[
-      colframe=placeholderblue, colback=placeholderbg,
-      boxrule=1.2pt, arc=2pt, left=6pt, right=6pt, top=3pt, bottom=3pt]
-      \centering\bfseries\color{headernavy}
-      [ IMAGE PLACEHOLDER \textendash{} Figure~#1 ]
+  \begin{figure}[H]\centering
+    \begin{tcolorbox}[colframe=placeholderblue,colback=placeholderbg,boxrule=1.2pt,arc=2pt,left=6pt,right=6pt,top=3pt,bottom=3pt]
+      \centering\bfseries\color{headernavy}[ IMAGE PLACEHOLDER \textendash{} Figure~#1 ]
     \end{tcolorbox}
-    \begin{tcolorbox}[
-      colframe=placeholderblue, colback=placeholderbg,
-      boxrule=1.2pt, arc=0pt, top=0pt, bottom=0pt,
-      left=6pt, right=6pt, sharp corners]
-      \centering\small\itshape\color{headernavy}
-      \textbf{Source:} #3 \quad|\quad \textbf{Reference:} #4
+    \begin{tcolorbox}[colframe=placeholderblue,colback=placeholderbg,boxrule=1.2pt,arc=0pt,top=0pt,bottom=0pt,left=6pt,right=6pt,sharp corners]
+      \centering\small\itshape\color{headernavy}\textbf{Source:} #3 \quad|\quad \textbf{Reference:} #4
     \end{tcolorbox}
-    \begin{tcolorbox}[
-      colframe=placeholderblue, colback=placeholderlight,
-      boxrule=1.2pt, arc=0pt, top=4pt, bottom=4pt,
-      left=8pt, right=8pt, sharp corners]
-      {\centering\bfseries\small\color{instructionred}
-        \ding{72}\enspace INSTRUCTIONS TO STUDENT \enspace\ding{72}\par}
-      \vspace{4pt}
-      {\small\color{black} #5\par}
-      \vspace{6pt}
-      \begin{center}
-        \setlength{\fboxsep}{10pt}
-        \fcolorbox{gray!50}{gray!8}{\parbox[c][3.5cm][c]{0.82\textwidth}{%
-          \centering
+    \begin{tcolorbox}[colframe=placeholderblue,colback=placeholderlight,boxrule=1.2pt,arc=0pt,top=4pt,bottom=4pt,left=8pt,right=8pt,sharp corners]
+      {\centering\bfseries\small\color{instructionred}\ding{72}\enspace INSTRUCTIONS TO STUDENT \enspace\ding{72}\par}
+      \vspace{4pt}{\small\color{black} #5\par}\vspace{6pt}
+      \begin{center}\setlength{\fboxsep}{10pt}
+        \fcolorbox{gray!50}{gray!8}{\parbox[c][3.5cm][c]{0.82\textwidth}{\centering
           {\large\color{gray!70}\textbf{[ Insert figure here ]}}\\[8pt]
-          {\small\color{gray!60}
-            Screenshot or export the figure from the source PDF,\\
+          {\small\color{gray!60}Screenshot or export the figure from the source PDF,\\
             upload it to Overleaf, then replace this\\
             \textbackslash imagePlaceholder command with\\
             \textbackslash includegraphics\{filename\}}}}
       \end{center}
     \end{tcolorbox}
-    \vspace{4pt}
-    \caption{#2}
-    \label{fig:#1}
+    \vspace{4pt}\caption{#2}\label{fig:#1}
   \end{figure}}
 
-% ── Paragraph indentation ────────────────────────────────────
 \setlength{\parindent}{1.5em}
 \setlength{\parskip}{3pt plus 1pt minus 1pt}
 
-% ── Abstract styling ─────────────────────────────────────────
 \usepackage{abstract}
 \renewcommand{\abstractnamefont}{\large\bfseries}
 \renewcommand{\abstracttextfont}{\normalfont}
 \setlength{\absleftindent}{0pt}
 \setlength{\absrightindent}{0pt}
 
-% ── Bibliography ─────────────────────────────────────────────
 \usepackage{cite}
 
-% ─────────────────────────────────────────────────────────────
-%   DOCUMENT
-% ─────────────────────────────────────────────────────────────
+% =============================================================
 \begin{document}
+% =============================================================
 
-% ════════════════════════════════════════════════════════════
-%   COVER PAGE  (matches KUET CSE 3230 standard format)
-% ════════════════════════════════════════════════════════════
+% ── COVER PAGE ───────────────────────────────────────────────
 \begin{titlepage}
-\thispagestyle{empty}
-\centering
+\thispagestyle{empty}\centering\vspace*{-0.8cm}
+\begingroup\setstretch{1.15}
 
-% Tight top spacing
-\vspace*{-0.8cm}
-
-\begingroup
-\setstretch{1.15}
-
-% ── University Logo ─────────────────────────────────────
 \includegraphics[width=3cm]{kuet.png}
 
 \vspace{0.5cm}
-
-% ── University Name ─────────────────────────────────────
-{\normalsize\bfseries
-Khulna University of Engineering \& Technology\\
+{\normalsize\bfseries Khulna University of Engineering \& Technology\\
 Department of Computer Science and Engineering}
 
 \vspace{0.6cm}
-
-% ── Course ──────────────────────────────────────────────
 {\small CSE 3230 : Technical Writing \& Seminar}
 
 \vspace{0.4cm}
 \noindent\rule{0.7\textwidth}{0.6pt}
 \vspace{0.6cm}
 
-% ── Title (Main Focus) ──────────────────────────────────
 {\fontsize{17}{20}\selectfont\bfseries
 Agentic Multimodal Systems for Medical Image Segmentation\\[4pt]
 \large A Critical Survey of Reinforcement-Driven Approaches}
 
 \vspace{0.8cm}
+{\small \textit{Prepared By}}\vspace{0.3cm}
 
-% ── Author Section ──────────────────────────────────────
-{\small \textit{Prepared By}}
+{\normalsize\bfseries MD Jahid Hasan Jim}\vspace{0.2cm}
 
-\vspace{0.3cm}
-
-{\normalsize\bfseries MD Jahid Hasan Jim}
-
-\vspace{0.2cm}
-
-{\small
-Department of Computer Science and Engineering\\
+{\small Department of Computer Science and Engineering\\
 Khulna University of Engineering \& Technology\\
 Email: \texttt{jim2107054@stud.kuet.ac.bd}}
 
@@ -202,55 +132,37 @@ Email: \texttt{jim2107054@stud.kuet.ac.bd}}
 \noindent\rule{0.7\textwidth}{0.6pt}
 \vspace{0.6cm}
 
-% ── Submitted To ────────────────────────────────────────
-{\small \textit{Submitted To}}
-
-\vspace{0.4cm}
+{\small \textit{Submitted To}}\vspace{0.4cm}
 
 {\normalsize\bfseries Dr.\ K.\ M.\ Azharul Hasan}\\
-{\small Professor\\
-Department of Computer Science and Engineering\\
+{\small Professor\\Department of Computer Science and Engineering\\
 Khulna University of Engineering \& Technology}
 
 \vspace{0.5cm}
 
 {\normalsize\bfseries Kazi Saeed Alam}\\
-{\small Assistant Professor\\
-Department of Computer Science and Engineering\\
+{\small Assistant Professor\\Department of Computer Science and Engineering\\
 Khulna University of Engineering \& Technology}
 
 \vfill
-
-% ── Footer ──────────────────────────────────────────────
-{\small
-Khulna-9203, Bangladesh\\
-April, 2026}
-
+{\small Khulna-9203, Bangladesh\\April, 2026}
 \endgroup
 \end{titlepage}
 
-% ─────────────────────────────────────────────────────────────
-\newpage
-\thispagestyle{empty}
+% ── TABLE OF CONTENTS ────────────────────────────────────────
+\newpage\thispagestyle{empty}
 \tableofcontents
-
 \vspace{1cm}
 
-% ─────────────────────────────────────────────────────────────
-%   SOURCE TABLE
-% ─────────────────────────────────────────────────────────────
+% ── SOURCE TABLE ─────────────────────────────────────────────
 \section*{Source Table}
 \addcontentsline{toc}{section}{Source Table}
-
 \begin{table}[H]
-\centering
-\renewcommand{\arraystretch}{1.4}
-\small
+\centering\renewcommand{\arraystretch}{1.4}\small
 \begin{tabular}{|c|p{7.5cm}|p{3.5cm}|c|}
 \hline
-\textbf{Serial No.} & \textbf{Paper Title} & \textbf{Source (URL)} & \textbf{Publication Date} \\
-\hline
-\hline
+\textbf{No.} & \textbf{Paper Title} & \textbf{Source (URL)} & \textbf{Date} \\
+\hline\hline
 1 & IBISAgent: Reinforcing Pixel-Level Visual Reasoning in MLLMs for Universal Biomedical Object Referring and Segmentation & \url{https://arxiv.org/abs/2601.03054} & Feb 2026 \\
 \hline
 2 & MEDVISTAGYM: A Scalable Training Environment for Thinking with Medical Images via Tool-Integrated Reinforcement Learning & \url{https://arxiv.org/abs/2601.07107} & Jan 2026 \\
@@ -259,32 +171,28 @@ April, 2026}
 \hline
 \end{tabular}
 \end{table}
-
 \newpage
 
-% ─────────────────────────────────────────────────────────────
-%   ABSTRACT
-% ─────────────────────────────────────────────────────────────
+% ── ABSTRACT ─────────────────────────────────────────────────
 \begin{abstract}
 \noindent
-The integration of reinforcement learning (RL) with multimodal large language models
-(MLLMs) has opened a transformative avenue for autonomous medical image analysis.
-Three recent systems --- IBISAgent~\cite{ibisagent}, MedVistaGym (together with
-MedVista-R1)~\cite{medvistagym}, and MedSAM-Agent~\cite{medsam_agent} --- represent
-the current frontier of this research direction, each offering a distinct perspective
-on how intelligent agents can perform pixel-level segmentation and clinical reasoning
-without direct human intervention.  This survey paper provides a rigorous and
-comparative analysis of the conceptual architecture, training methodology, reward
-design, experimental validation, and broader clinical implications of these three
-frameworks.  We examine shared design principles --- notably the reformulation of
-segmentation as a Markov Decision Process, the use of two-stage supervised fine-tuning
-followed by RL, and the exploitation of tool-integrated feedback loops --- alongside
-key differentiating factors such as action-space formulation, reward granularity,
-dataset diversity, and out-of-domain generalization.  Through this analysis we identify
-open challenges including computational overhead, scalability to volumetric 3D data,
-and the need for richer process-level supervision.  The review concludes with a
-synthesis of lessons and a forward-looking perspective on the next generation of
-agentic medical AI.
+The use of reinforcement learning with language models that can handle many types of data
+has opened up a new way for computers to analyze medical images on their own.
+Recently three systems---IBISAgent~\cite{ibisagent}, MedVistaGym and
+MedVista-R1~\cite{medvistagym}, and MedSAMAgent~\cite{medsam_agent}---have
+shown how computers can be trained to look at images in detail and make
+clinical decisions without human help.
+This review compares how these three systems work.
+We look at how they are designed, how they are trained, and how they make decisions.
+We also examine what they have in common and what makes them different.
+These systems use a process to make decisions. They are fine-tuned in two stages before
+being trained with reinforcement learning.
+We find that there are still some challenges to overcome such as making these systems
+faster and able to handle complex data.
+We also need to find ways to give these systems information about the process
+and make them better at handling new situations.
+The review ends with some ideas for improvements and a look at what the next
+generation of medical AI systems might be like.
 
 \vspace{6pt}
 \noindent\textbf{Keywords:} Medical Image Segmentation, Multimodal Large Language
@@ -292,574 +200,562 @@ Models, Reinforcement Learning, Agentic AI, Segment Anything Model, Interactive
 Segmentation, Markov Decision Process, Tool-Integrated Reasoning.
 \end{abstract}
 
-\hrule
-\vspace{12pt}
+\hrule\vspace{12pt}
 
-% ─────────────────────────────────────────────────────────────
+% =============================================================
 \section{Introduction}
 \label{sec:intro}
-% ─────────────────────────────────────────────────────────────
+% =============================================================
 
-Medical image segmentation occupies a foundational position in contemporary clinical
-practice.  The capacity to isolate anatomical structures, delineate pathological
-lesions, and quantify morphological change underpins decisions in oncology, radiology,
-cardiology, and surgical planning.  Historically, this task has been addressed through
-two distinct paradigms: task-specific supervised models such as U-Net~\cite{unet} and
-its successors, and interactive segmentation tools like the Segment Anything
-Model~\cite{sam} and its medical adaptations~\cite{medsam2}.  Both paradigms carry
-inherent limitations that constrain deployment at scale.
+Medical image segmentation is an essential technique that possesses a primary strategic
+requirement in current medical practices.
+The power to detect and separate normal anatomical structures, pinpoint pathological
+lesions, and measure the temporal dynamics of size and shape is central to
+decision-making in oncology, radiology, cardiology, and operation scheduling.
+The situation has been historical that such a task is handled through two paradigm
+methods: specific functions supervised models such as U-Net~\cite{unet} and its
+successors, and the interactive segmentation tools Segment Anything
+Model~\cite{sam} and its medical adaptations~\cite{medsam2}.
+Neither paradigm is without its drawbacks, which limit their usefulness at a larger
+scale.
+Supervised models dominate the scores in narrow ranges of the datasets they train on
+and are not relevant to the other situations or the standards they require.
+The interactive types of MedSAM~\cite{medsam2} on the other hand are the opposite for
+they solve the distribution shift problem mainly due to their method of
+prompt-conditioned inference.
+Nevertheless, they transfer the cognitive load to the clinicians who are required to
+provide a number of bounding boxes or click prompts for every single case---this is
+not feasible in a large number of patients.
 
-Supervised models achieve impressive benchmarks within the narrow distributions they
-are trained on, yet they degrade markedly when presented with out-of-distribution
-imaging modalities or unexpected pathology patterns.  Interactive models such as
-MedSAM~\cite{medsam2} resolve the distribution shift problem through
-prompt-conditioned inference, but they transfer the cognitive burden to clinicians who
-must supply bounding boxes or click prompts for every case --- an arrangement that is
-operationally unsustainable in high-volume clinical settings.
+The rise of MLLMs has demonstrated a third way to be undertaken: machines that can
+comprehend the human language notes, deduce the visible information, and take
+actions---they displace the human prompter with the independent reasoning agent.
+Such outstanding work as LISA~\cite{lisa} has shown that a single \texttt{<SEG>}
+token which is included in the MLLM output stream can be decoded by an external pixel
+decoder.
+The idea was elegant but carried a structural cost: inserting an implicit task token
+shifts the model's native language representation space, impairing open-ended reasoning
+and cross-domain generalisation~\cite{ibisagent}.
+A subtler limitation is that all of these approaches treat segmentation as a single
+forward pass---one look at the image, one prediction, done.
+Human annotators do not work that way; they place an initial mark, check the result,
+correct mistakes, and iterate until satisfied.
 
-The emergence of MLLMs has created a third possibility: systems that can read natural
-language instructions, interpret visual content, and take actions --- replacing the
-human prompter with an autonomous reasoning agent.  Pioneering work such as
-LISA~\cite{lisa} demonstrated that a single \texttt{<SEG>} token embedded in the MLLM
-output stream could be decoded by an external pixel decoder to generate segmentation
-masks.  While conceptually elegant, this approach introduces implicit tokens that
-disrupt the model's native language representation space and forces joint fine-tuning
-of the language model and the decoder, raising the risk of catastrophic forgetting and
-limiting cross-domain generalization~\cite{ibisagent}.
+Three groups, working independently, published papers in early 2026 that all converge
+on the same alternative: reformulate segmentation as a multi-step agent-environment
+interaction loop and use RL to train the agent.
+IBISAgent~\cite{ibisagent} generates text-encoded click commands, sends them to
+MedSAM2, observes the updated mask, and refines its plan before taking the next click.
+MedVistaGym and MedVista-R1~\cite{medvistagym} build a Gym-style environment containing
+fifteen visual and biomedical knowledge tools and train an InternVL3-based agent to
+select and invoke the right tool at the right moment.
+MedSAM-Agent~\cite{medsam_agent} expands the action vocabulary to include bounding
+boxes as well as click points, and introduces a process-aware reward that penalises
+both overshooting a good segmentation and taking needlessly many steps.
 
-A more recent line of research argues that segmentation should be conceptualized not
-as a single forward pass but as an iterative, agent-environment interaction cycle.
-Three independent systems published within months of one another in early 2026 embody
-this philosophy: IBISAgent~\cite{ibisagent}, which reframes biomedical object referring
-and segmentation as a multi-step Markov Decision Process (MDP) driven by click-based
-spatial prompts; MedVistaGym~\cite{medvistagym}, which establishes a scalable training
-environment and uses it to train MedVista-R1, an agent that invokes heterogeneous
-visual and biomedical knowledge tools through structured tool calls; and
-MedSAM-Agent~\cite{medsam_agent}, which extends the interactive segmentation paradigm
-with a hybrid box-and-point action space and a clinically motivated process reward
-design.
-
-Despite sharing the broad goal of autonomous medical image segmentation, these three
-systems differ substantially in their action-space formulations, reward structures,
-training data scales, and evaluation protocols.  A comparative study is therefore not
-merely an academic exercise; it offers practitioners and researchers a structured
-understanding of the trade-offs involved in deploying agentic segmentation systems and
-illuminates the open problems that the field must address.
+Although the three AI systems all aim at automating medical image segmentation, they
+involve different action-space formulations, reward mechanisms, scales of required
+training data, and evaluation procedures.
+The results reported with respect to these approaches cannot be taken as an indication
+of what one can expect with the others. Comparing and contrasting these three AI
+systems offers a timely opportunity to raise awareness of the practical challenges in
+building agentic segmentation systems and the associated limitations of current
+methodologies for designing and evaluating such systems.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{fig1.png}
-  \caption{Comparison of three dominant medical image segmentation paradigms:
-   (a)~SAM-based interactive models requiring continuous manual prompting,
-   (b)~MLLM-driven models using implicit \texttt{<SEG>} tokens with external pixel
-   decoders, and (c)~the autonomous agentic paradigm exemplified by MedSAM-Agent,
-   where the agent performs multi-turn refinement through iterative feedback and tool
-   interaction. Adapted from Liu et al.~\cite{medsam_agent}.}
+  \caption{A schematic comparison of three paradigms for medical image segmentation.
+   (a)~SAM-derived interactive models requiring manual prompts for every case.
+   (b)~MLLM-driven models using implicit \texttt{<SEG>} tokens decoded by an external
+   pixel head. (c)~The autonomous agentic paradigm, illustrated by MedSAM-Agent, where
+   the agent refines the mask iteratively through a feedback loop without human
+   involvement. Adapted from Liu et al.~\cite{medsam_agent}.}
   \label{fig:1}
 \end{figure}
 
-The remainder of this review proceeds as follows.  Section~\ref{sec:background}
-situates the three systems within the broader landscape of related work.
-Section~\ref{sec:methodology} presents a detailed methodology of each framework.
-Section~\ref{sec:discussion} provides a structured discussion.
-Section~\ref{sec:synthesis} provides an integrative synthesis and identifies future
-frontiers.  Section~\ref{sec:conclusion} concludes.
+The rest of this review is organized as follows.
+We provide an overview of the three systems with a focus on the assumptions, goals,
+and organization in Section~\ref{sec:background}.
+Section~\ref{sec:methodology} presents in-depth analyses of how model human cognition
+has been incorporated in each system.
+This is followed by a side-by-side comparison in Section~\ref{sec:discussion}.
+We then synthesize similarities and differences between the three in
+Section~\ref{sec:synthesis}.
+After this we identify key issues and draw implications.
+A discussion on the relations between modeling and supporting designers and on MLGOs
+in particular is also provided.
 
-% ─────────────────────────────────────────────────────────────
+% =============================================================
 \section{Background and Related Work}
 \label{sec:background}
-% ─────────────────────────────────────────────────────────────
+% =============================================================
 
-\subsection{Evolution of Medical Image Segmentation}
+\subsection{Medical Image Segmentation: A Brief History}
 
-The trajectory of medical image segmentation research over the past decade reflects a
-tension between specificity and generality.  Methods grounded in fully convolutional
-networks such as U-Net~\cite{unet} established strong intra-dataset performance but
-required retraining for each new task.  The introduction of nnU-Net~\cite{nnunet}
-automated the training pipeline but preserved the fundamental constraint of
-task-specific parameter sets.  Transformer-based architectures extended the receptive
-field and improved handling of long-range spatial dependencies, yet the core paradigm
-remained intact.
+The course of research on medical image segmentation over the last ten years has been
+a battlefield between specificity and generality.
+The methods based on fully convolutional networks like U-Net~\cite{unet} not only
+achieved good results inside one dataset, but they also needed retraining for each new
+task.
+The nnU-Net~\cite{nnunet} which is an innovative model had a self a training pipeline
+for details but it still included the basic rule of task-specific parameter settings.
+Transformer-based structures have added the receptive field and improved the concept of
+spatial dependencies which are of long range, yet, the core paradigm is still the same.
+The release of the SAM~\cite{sam} was a bucket of fresh thought as it was not a succor
+but a prognosis, the agnostic segmentation basis.
+SAM has points, bounding boxes, or masks as the prompts that it accepts and
+high-quality segmentation is produced across many different natural image domains.
+MedSAM~\cite{medsam2} was this type of adaptation applied to biomedical imaging by
+fine-tuning on large-scale annotated medical datasets, which showed a remarkable boom
+in performance compared to zero-shot SAM.
+MedSAM2~\cite{medsam2} was the first in history to add the stereoscopic and dynamic
+video technology to the scope of the approach.
+But to make use of these models, experts should provide prompts in the inference time.
 
-The release of SAM~\cite{sam} marked a conceptual departure by offering a promptable,
-task-agnostic segmentation foundation.  SAM accepts points, bounding boxes, or masks
-as prompts and produces high-quality segmentation across diverse natural image domains.
-MedSAM~\cite{medsam2} adapted this architecture to biomedical imaging through
-fine-tuning on large-scale annotated medical datasets, demonstrating substantial gains
-over zero-shot SAM.  MedSAM2~\cite{medsam2} extended the approach to 3D volumes and
-video sequences.  These models, however, remain dependent on expert-supplied prompts
-at inference time.
+\subsection{Connecting MLLMs to Pixel-Level Prediction}
 
-\subsection{MLLMs for Pixel-Level Understanding}
-
-The integration of MLLMs into pixel-level visual understanding was substantially
-advanced by LISA~\cite{lisa}, which introduced a reasoning segmentation task wherein
-the model must parse a complex natural language query and generate the corresponding
-segmentation mask.  The mechanism relies on a special \texttt{<SEG>} embedding whose
-hidden states are decoded by a SAM-like pixel decoder.  This paradigm was subsequently
-adapted to the medical domain by several groups.  MedPLIB~\cite{medplib} extended LISA
-with pixel-level insight for biomedicine; UniBiomed~\cite{unibiomed} constructed a
-universal biomedical foundation model covering grounded image interpretation; and
+In this paper we present a method to enhance Multiple Label Learning Models (MLLMs)
+for pixel-wise visual classification.
+In natural language inference, current models are evaluated on accuracy.
+In this paper, we examine an alternate objective for the challenging task: we introduce
+and evaluate reasoning segmentation for natural language inference.
+With input sentences parsed into separate, individuable steps of reasoning, a model
+must first learn to segment a sentence into distinct reasoned arguments before learning
+to select the correct response to a given inference task.
+We systematically examine models presented with all possible partitions of input
+sentences and find that some models can learn to select optimal partitions with
+state-of-the-art accuracy.
+In this paper, we explore the task of producing segmentation masks for natural language
+input.
+We present an approach which processes complex natural language input and directly
+generates a proper segmentation mask as output.
+The approach learns a special \texttt{<SEG>} embedding, and then it uses a SAM-like
+pixel decoder to decode the hidden states for this embedding.
+Several approaches extended this idea to medicine.
+MedPLIB~\cite{medplib}: in order to get insight on groups of pixels LISA was extended
+to also get insight on the single pixel level, with applications in biomedicine.
+UniBiomed~\cite{unibiomed} extended the universal biomedical foundation model to also
+address the task of grounded image interpretation.
 Citrus-V~\cite{citrusv} advanced unified medical grounding for clinical reasoning.
+In this paper we reveal two basic structural limitations of current LISA-style systems.
+Implicit tokens in language model output shifts the language generation distribution to
+force the model to be less open-ended in capability than it would be otherwise.
 
-A critical analysis of these LISA-style systems reveals two structural limitations.
-First, the introduction of implicit tokens into the output stream alters the model's
-language generation distribution, compromising its capacity for open-ended reasoning.
-Second, all of these approaches are fundamentally single-turn: given a question, the
-model performs one forward pass and emits a mask.  This architecture cannot support
-iterative refinement, and therefore cannot emulate the multi-step annotation workflows
-that human experts employ in clinical practice~\cite{ibisagent,medsam_agent}.
+\subsection{Tool-Augmented and Agentic Reasoning in Medicine}
 
-\subsection{Tool-Augmented and Agentic Reasoning}
+The idea of augmenting language models with callable tools has a long history in NLP,
+but its application to medical visual reasoning took off partly in response to
+DeepSeek-R1~\cite{deepseekr1}, which showed that RL from verifiable rewards could
+dramatically improve structured reasoning.
+MMedAgent~\cite{mmedagent} trained a medical MLLM to invoke specialist tools through
+instruction tuning, and VILA-M3~\cite{vilam3} triggered expert perception modules, but
+both treated tool use as a fixed, single-step function call.
 
-The concept of augmenting language models with external tools has a long history in
-general natural language processing, but its application to medical visual reasoning
-has accelerated significantly following the success of DeepSeek-R1~\cite{deepseekr1}
-and related RL-based reasoning frameworks.  In the medical domain,
-MMedAgent~\cite{mmedagent} constructed an instruction-tuning corpus that trained an
-MLLM to invoke specialized medical tools in a single step.  VILA-M3~\cite{vilam3}
-triggered expert perception models for specific subtasks.  AURA~\cite{aura} integrated
-heterogeneous tools for medical VQA.  These approaches treat tool usage as a fixed
-function call rather than as part of a dynamic, feedback-driven reasoning loop.
+This two-part e-book continues the theme started in Beyond Visual Acuity and explores
+the topic of tools---what they can do for medical vision, and the benefits of tool use
+by clinicians.
+When reasoning, one needs to learn how to use tools, and also how to employ disciplined
+interaction policies.
+All three systems reviewed here use RL to train that kind of multi-turn orchestration---
+the central technical contribution shared by IBISAgent~\cite{ibisagent},
+MedVistaGym/MedVista-R1~\cite{medvistagym}, and MedSAM-Agent~\cite{medsam_agent}.
 
-The three systems reviewed in this paper ---
-IBISAgent~\cite{ibisagent}, MedVistaGym/MedVista-R1~\cite{medvistagym}, and
-MedSAM-Agent~\cite{medsam_agent} --- all move beyond single-turn tool invocation
-toward multi-turn, RL-optimized interaction.  They share the key insight that effective
-tool use in clinical visual reasoning requires learning disciplined interaction
-policies, not merely having access to tools.
-
-% ─────────────────────────────────────────────────────────────
+% =============================================================
 \section{Methodology}
 \label{sec:methodology}
-% ─────────────────────────────────────────────────────────────
+% =============================================================
 
 \subsection{IBISAgent: Iterative Biomedical Interactive Segmentation Agent}
 \label{sec:ibis}
 
-\subsubsection{Conceptual Foundation}
+\subsubsection{Motivation and Core Idea}
 
-IBISAgent~\cite{ibisagent} was designed by researchers at Zhejiang University and the
-Shanghai Artificial Intelligence Laboratory to resolve two structural deficiencies of
-existing medical MLLMs: the reliance on implicit segmentation tokens that corrupts the
-language representation space, and the restriction to single-pass inference that
-prevents iterative mask refinement.  The core insight motivating IBISAgent is that
-segmentation can be recast as a multi-step MDP in which the MLLM generates text-based
-click commands, invokes an external interactive segmentation tool (specifically
-MedSAM2~\cite{medsam2}), and updates its action plan based on the resulting mask
-observation.
+The team of researchers from the Zhejiang University, and the Shanghai AI Lab developed
+IBISAgent~\cite{ibisagent}, to solve the structural issues that exist with current
+Medical Language Models for Masked Language Modeling (MMLM): explicit segmentation
+tokens that damage the language representation space and restrict models to perform
+inference one time to prevent iterative masking refinement.
+The key idea behind developing IBISAgent is to treat masked language modeling as a
+Multi-Step Markov Decision Process (MDP) where the MLM generates text-based click
+commands, calls an interactive segmentation tool (MedSAM2~\cite{medsam2}) and updates
+the action plan according to the resulting mask observation.
+This way the original space of text output of the MLM remains intact.
+Instead of emitting a token, the model produces action strings that contain the target
+class, the click polarity ($+/-$) and the normalized 2D coordinates.
+The process continues until the model determines that the mask is acceptable; at this
+point it terminates and produces a natural language answer.
 
-This formulation preserves the MLLM's native text output space entirely.  Rather than
-emitting a \texttt{<SEG>} token, the model outputs structured action strings that
-encode the target class, click polarity (positive or negative), and normalized 2D
-coordinate.  The interaction continues until the model judges the mask to be
-satisfactory, at which point it emits a termination signal and generates a natural
-language answer.  Crucially, no architectural modifications to the base MLLM
-(Qwen2.5-VL-7B~\cite{qwen25vl}) are required beyond training.
+\subsubsection{Architecture and Rollout Mechanics}
+
+In its formal definition, the interaction trajectory $\mathcal{P}$ of IBISAgent is
+defined as $\mathcal{P} = \{(r_t, a_t, o_t)\}_{t=1}^{T}$, where $r_t$ is the
+reasoning at step $t$, $a_t$ is the click action, and $o_t$ is the observation of
+segmentation---an image that overlays the current mask on top of the original image in
+a semi-transparent way.
+Such composite observations are then encoded by the vision encoder at every step,
+making it possible to perceive the boundary of the current mask and the underlying
+anatomy simultaneously.
+The thought-action-observation cycle continues until an explicit end token is generated
+or a maximum context length is achieved.
+Actions consist of three parts per click: Target (name of segmentation classes),
+Attribute ($\alpha \in \{+1,-1\}$), and Coordinate\_2d ($(x,y) \in [0,1]^2$).
+Observation $o_0$ is set to be an empty mask, while $o_T$ corresponds to the optimal
+target mask.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{fig2.png}
-  \caption{Overview of the IBISAgent framework showing (a)~the overall agent
-   architecture with iterative thought-action-observation loop,
-   (b)~the cold-start SFT pipeline using Gemini-2.5-Pro and GPT-5, and
-   (c)~the RL training pipeline with fine-grained reward design.
+  \caption{Overview of the IBISAgent framework.
+   (a)~The iterative thought-action-observation loop: the agent reasons, emits a click
+   action, and receives an updated composite image at each step.
+   (b)~The cold-start SFT pipeline, where Gemini-2.5-Pro generates question-answer
+   pairs and GPT-5 synthesises step-by-step reasoning traces via a Teacher-Student
+   strategy.
+   (c)~The RL stage with the five-component reward signal.
    Adapted from Jiang et al.~\cite{ibisagent}.}
   \label{fig:2}
 \end{figure}
 
-\subsubsection{Architecture and Rollout}
+\subsubsection{Building the Training Data}
 
-Formally, IBISAgent represents an interaction trajectory as
-$\mathcal{P} = \{(r_t, a_t, o_t)\}_{t=1}^{T}$, where $r_t$ is the textual reasoning
-at step $t$, $a_t$ is the click action, and $o_t$ is the segmentation observation ---
-a composite image in which the current mask is overlaid semi-transparently on the
-original image.  This composite observation is re-encoded by the vision encoder at
-each step, enabling the model to simultaneously perceive both the current mask
-boundaries and the underlying anatomy.  The iterative thought-action-observation loop
-continues until a designated end token is produced or a maximum context length is
-reached.
+The major challenge in building the IBISAgent was the unavailability of any trajectory
+for click steps, which can be publicly accessible.
+To address this constraint, the authors utilized an automatic click simulation technique
+that was applied on BioMedParseData dataset~\cite{biomedparse} which contains 3.4
+million clicks with an image-mask-label triplet for 82 biomedical object classes over 9
+imaging modalities.
+With the help of the ground-truth mask $M_{\text{gt}}$ and the predicted mask $M_t$,
+the simulator is capable of locating the FP and FN areas, performing a Euclidean
+distance transform operation, and clicking at the center of the largest error
+area---an approach borrowed from previous literature in interactive
+segmentation~\cite{deepinteractive}.
 
-The action space captures three components for each click: \textit{Target} (the
-segmentation class name), \textit{Attribute} ($\{+1, -1\}$), and
-\textit{Coordinate\_2d} ($(x, y) \in [0, 1]^2$).  The observation $o_0$ is
-initialized as an empty mask, and the final observation represents the optimal target
-mask.
+Different question-answer pairs were formed using
+Gemini-2.5-Pro~\cite{gemini25}.
+Thereafter, GPT-5~\cite{gpt5} was used to generate the trajectory in the form of
+reasoning via Teacher-Student pipeline for every click without any knowledge of
+ground-truth labels.
 
-\subsubsection{Dataset Construction and Trajectory Generation}
-
-A central challenge in building IBISAgent was the absence of publicly available
-step-wise annotation trajectories.  The authors addressed this through an automated
-click simulation algorithm applied to the large-scale BioMedParseData
-corpus~\cite{biomedparse}, which contains 3.4 million image-mask-label tuples covering
-82 biomedical object types across 9 imaging modalities.  Given the ground truth mask
-$M_{\text{gt}}$ and the current predicted mask $M_t$, the simulator identifies false
-positive (FP) and false negative (FN) regions, applies a Euclidean distance transform,
-and places the next click at the centroid of the largest error region --- a strategy
-adapted from prior interactive segmentation work~\cite{deepinteractive}.
-
-Gemini-2.5-Pro~\cite{gemini25} was employed to generate diverse question-answer pairs.
-GPT-5~\cite{gpt5} was subsequently used to synthesize step-by-step reasoning traces
-for each click action via a Teacher-Student pipeline, producing anatomically grounded
-reasoning without revealing ground truth information in the generated text.
+In addition to rotation, color and brightness augmentation and mirroring, we also
+generate trajectories where the virtual view-point reflects off the surface of two
+walls in the same room.
+This results in a large number of distinct viewing positions.
+Errors and situations where error correction happens while the error is being made,
+i.e., the agent recognises it is making a mistake and undoes the wrong action.
+And user-inconsistency correction (where the initial mask provided by the user fails
+to match).
+After quality filtering, $\mathcal{D}_\text{cold}$ contains
+456,000 samples with a mean trajectory length of 8.69 steps and overall mean IoU
+of 94.27.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{fig3.png}
-  \caption{Automated trajectory generation for liver segmentation in IBISAgent.  The
-   algorithm places positive clicks (blue) in false-negative regions and negative
-   clicks (red) in false-positive regions, progressively improving IoU from 0 to
-   $\approx$0.95 across seven interaction steps.
+  \caption{Automated trajectory generation for liver segmentation in IBISAgent.
+   At each step, positive clicks (blue) are placed in under-segmented (false-negative)
+   regions and negative clicks (red) in over-segmented (false-positive) regions.
+   IoU rises from 0 to roughly 0.95 across seven interactions.
    Adapted from Jiang et al.~\cite{ibisagent}.}
   \label{fig:3}
 \end{figure}
 
-An additional layer of data augmentation introduced self-reflective trajectories
-covering two error-correction scenarios: self-correction (where the agent detects a
-wrong action and reverts) and user-inconsistency correction (where the initial mask
-provided by the user does not match the instruction and must be discarded).  The
-resulting cold-start SFT dataset $\mathcal{D}_\text{cold}$ comprises 456K samples
-with an average trajectory length of 8.69 steps and an overall average IoU of 94.27.
-
 \subsubsection{Two-Stage Training}
 
-IBISAgent is trained in two stages.  The first stage, cold-start SFT, trains the model
-to generate syntactically valid action sequences, produce anatomically grounded
-reasoning, and execute self-correction behavior.  The SFT loss is a standard negative
-log-likelihood over reasoning and action tokens.
+The training procedure for IBISAgent consists of two phases.
+First, cold start supervised fine-tuning (SFT) trains the network to output
+syntactically correct sequences of actions, to provide anatomically reasonable
+reasoning, and to display self-repair behavior.
+The loss function for SFT training is a classic negative log-likelihood loss applied to
+reasoning and action tokens.
 
-The second stage applies Group Relative Policy Optimization
-(GRPO)~\cite{deepseekr1} on the RL dataset $\mathcal{D}_\text{rl}$, which contains
-888K VQA samples including both pixel-level reasoning tasks and general medical VQA
-data.  The reward function is a normalized sum of five components:
+Stage two applies GRPO~\cite{deepseekr1} on $\mathcal{D}_\text{rl}$ (888K VQA
+samples mixing pixel-level and general medical VQA).
+The reward is a normalised average of five components:
 \begin{enumerate}
-  \item \textbf{Format reward} $S_\text{format}$ --- checks structural output validity;
-  \item \textbf{Final-answer reward} $S_\text{ans}$ --- measures IoU against ground
-        truth with piecewise thresholds;
-  \item \textbf{Region-based click placement reward} $S_\text{click}$ --- penalizes
-        positive clicks outside FN regions and negative clicks outside FP regions;
-  \item \textbf{Progressive improvement reward} $S_\text{pseg} = \mathbb{1}(\Delta\text{IoU}_t > 0)$ --- rewards each action yielding a strictly positive IoU gain;
-  \item \textbf{Trajectory length reward} $S_\text{len}$ --- penalizes sequences
-        exceeding a predefined optimal length $T_\text{opt}$.
+  \item \textbf{Format reward} $S_\text{format}$: checks required tokens appear in
+        correct order and \texttt{<action>} fields are parseable;
+  \item \textbf{Final-answer reward} $S_\text{ans}$: piecewise IoU reward for
+        segmentation; exact match for VQA;
+  \item \textbf{Region-based click placement reward} $S_\text{click}$: positive clicks
+        must land in FN regions, negative clicks in FP regions;
+  \item \textbf{Progressive improvement reward}
+        $S_\text{pseg} = \mathbb{1}(\Delta\text{IoU}_t > 0)$: each step must improve
+        the mask;
+  \item \textbf{Trajectory length reward} $S_\text{len}$: growing penalty for sequences
+        exceeding the optimal length $T_\text{opt}$.
 \end{enumerate}
-The final reward is $S = \frac{1}{5}(S_\text{ans} + S_\text{format} +
-S_\text{click} + S_\text{pseg} + S_\text{len})$.
+Final reward: $S = \frac{1}{5}(S_\text{ans}+S_\text{format}+S_\text{click}+S_\text{pseg}+S_\text{len})$.
 
 \subsubsection{Experimental Results}
 
-IBISAgent is evaluated on three benchmarks: an in-domain test set
-$\mathcal{D}_\text{test}$ (9K image-mask pairs from BioMedParseData), the
-out-of-domain MeCOVQA-G+ benchmark~\cite{medplib} (3,157 pairs across 5 modalities),
-and a held-out in-house dataset comprising 1K CT, MRI, and histopathology images
-across 7 cancer types.  On the in-domain benchmark, IBISAgent achieves IoU~= 85.58\%,
-DSC~= 92.21\%, and F1~= 96.39\%, surpassing the next best method
-(UniBiomed~\cite{unibiomed} with IoU~= 50.74\%) by approximately 35 percentage
-points.  On MeCOVQA-G+, IBISAgent attains IoU~= 80.63\%, compared to 46.54\% for
-Citrus-V~\cite{citrusv}.
+IBISAgent is evaluated on three benchmarks: a 9K in-domain test set from
+BioMedParseData, the out-of-domain MeCOVQA-G+ benchmark~\cite{medplib} (3,157 pairs
+across five modalities), and a private held-out dataset from three medical centres
+with 1K CT, MRI, and histopathology images across seven cancer types.
+On the in-domain split: IoU~=~85.58\%, DSC~=~92.21\%, F1~=~96.39\%.
+The nearest competitor, UniBiomed~\cite{unibiomed}, scores IoU~=~50.74\%, a gap of
+roughly 35 percentage points.
+On MeCOVQA-G+: 80.63\% vs 46.54\% for Citrus-V~\cite{citrusv}.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{fig4.png}
-  \caption{Qualitative comparison on a hepatic tumor segmentation case.  GPT-4o
-   misidentifies the location; MedPLIB outputs only a \texttt{<SEG>} token;
-   UniBiomed hallucinates non-existent findings.  IBISAgent iteratively refines the
-   mask across four steps, reaching IoU~= 96.74\% with coherent clinical reasoning.
-   Adapted from Jiang et al.~\cite{ibisagent}.}
+  \caption{Qualitative comparison on a hepatic tumour segmentation case.
+   GPT-4o misidentifies the lesion location; MedPLIB outputs only a \texttt{<SEG>}
+   token with no clinical reasoning; UniBiomed hallucinates a pericardial effusion
+   absent from the image.
+   IBISAgent refines the mask over four steps, reaching IoU~=~96.74\% alongside
+   coherent clinical text. Adapted from Jiang et al.~\cite{ibisagent}.}
   \label{fig:4}
 \end{figure}
 
-Ablation studies confirm that RL training provides the largest single performance
-gain, and that each of the five reward components makes an independent contribution to
-both segmentation quality and interaction efficiency.
+The ablation studies clearly show that reinforcement learning is the main driver behind
+the performance boost.
+At the same time, each of the five reward components plays its own role, independently
+contributing to better segmentation quality as well as more efficient interactions.
 
-% ─────────────────────────────────────────────────────────────
-\subsection{MedVistaGym and MedVista-R1: Tool-Integrated Reasoning for Medical VQA}
+% ──────────────────────────────────────────────────
+\subsection{MedVistaGym and MedVista-R1: Tool-Integrated Reasoning}
 \label{sec:medvista}
-% ─────────────────────────────────────────────────────────────
+% ──────────────────────────────────────────────────
 
-\subsubsection{Conceptual Foundation}
+\subsubsection{Motivation and Core Idea}
 
-The MedVistaGym framework~\cite{medvistagym}, developed by researchers at Virginia
-Tech, UT Southwestern Medical Center, Georgia Institute of Technology, and Cisco,
-targets a complementary challenge: enabling VLMs to reason about medical images by
-dynamically selecting and invoking heterogeneous external tools, rather than being
-limited to a fixed segmentation backend.  The central claim is that effective
-tool-integrated reasoning in the medical domain cannot be achieved through tool access
-alone --- it requires explicit training of disciplined interaction policies through RL.
+In this regard, the MedVistaGym paradigm~\cite{medvistagym}, conceived by researchers
+from Virginia Tech, UT Southwestern Medical Center, Georgia Institute of Technology,
+and Cisco, focuses on a different but related problem: allowing VLMs to reason over
+medical images by dynamically selecting and invoking external tools, rather than being
+limited to a predetermined segmentation backend.
+Tool access alone is not enough---as the ablations demonstrate, giving a strong
+baseline model tools without structured training actually \emph{hurts} performance.
+What the agent needs is an RL regime that teaches it \emph{when} to invoke a tool,
+\emph{which} one to pick, and how to synthesise the returned observation into a revised
+reasoning chain.
 
-MedVistaGym is constructed as a scalable, executable Gym-style environment that
-provides VLMs with access to 15 visual and biomedical knowledge tools organized into
-four families: (1)~Resolution and Region Refinement (e.g., 4KAgent); (2)~Medical
-Localization and Segmentation (e.g., GroundingDINO, SAM2, BioMedParse, MedSAM2);
-(3)~Medical Visual Understanding and Parsing (e.g., BiomedCLIP); and (4)~External
-Biomedical Knowledge Retrieval (e.g., PubMed, DrugBank, GoogleSearch).
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=\linewidth]{fig5.png}
-  \caption{Overview of the MEDVISTAGYM environment: bio-medical images feed into an
-   LLM agent that interacts with a suite of visual tools and produces annotated
-   outputs; the right panel illustrates a chest X-ray pneumonia analysis use case.
-   Adapted from Lu et al.~\cite{medvistagym}.}
-  \label{fig:5}
-\end{figure}
+To operationalise this, the team built MEDVISTAGYM: a Gym-style executable environment
+wrapping fifteen tools under a unified API, grouped into four families: Resolution and
+Region Refinement (e.g., 4KAgent), Medical Localisation and Segmentation (e.g.,
+GroundingDINO, SAM2, BioMedParse, MedSAM2), Medical Visual Understanding
+(e.g., BiomedCLIP), and External Knowledge Retrieval (e.g., PubMed, DrugBank).
 
 \subsubsection{Problem Formulation}
 
-MedVistaGym formalizes tool-integrated medical image analysis as a Partially
-Observable Markov Decision Process (POMDP).  Given a medical question with associated
-image(s), the agent generates explicit reasoning steps and selects tool actions from a
-well-defined, executable action space.  An interaction trajectory
-$U = (g_0, a_0, \ldots, g_T, \hat{y})$ records interleaved reasoning steps $g_t$,
-tool actions $a_t$, and the final answer $\hat{y}$ after $T$ interaction steps.  The
-strict output format ---
-\texttt{<think>}\,$\ldots$\,\texttt{</think>}%
-\texttt{<tool\_call>}\,$\ldots$\,\texttt{</tool\_call>}%
-\texttt{<think>}\,$\ldots$\,\texttt{</think>}%
-\texttt{<answer>}\,$\ldots$\,\texttt{</answer>} ---
-enforces a sequential discipline: the agent must reason before calling a tool, then
-reason again after observing the output before emitting a final answer.
+MEDVISTAGYM formalises the problem as a Partially Observable MDP.
+An interaction trajectory $U = (g_0, a_0, \ldots, g_T, \hat{y})$ records reasoning
+steps $g_t$, tool invocations $a_t$, and the final answer $\hat{y}$ after $T$ steps.
+The fixed output format---
+\texttt{<think>}\,$\ldots$\,\texttt{</think>}
+\texttt{<tool\_call>}\,$\ldots$\,\texttt{</tool\_call>}
+\texttt{<think>}\,$\ldots$\,\texttt{</think>}
+\texttt{<answer>}\,$\ldots$\,\texttt{</answer>}---
+basically makes the agent slow down and think things through properly.
+It has to reason first before calling any tool, then pause and rethink after seeing the
+result, and only then give the final answer.
+This flow keeps the process more thoughtful and structured, instead of letting the
+model jump straight to a conclusion without reflecting on what just happened.
 
 \subsubsection{Training Data and Trajectory Generation}
 
-Training data for MedVista-R1 is drawn from PathVQA~\cite{pathvqa},
-SLAKE~\cite{slake}, and VQA-RAD~\cite{vqarad}.  GPT-5~\cite{gpt5} is deployed within
-the live MEDVISTAGYM environment to generate candidate reasoning trajectories with real
-tool invocations, retaining only those whose final answers match the ground truth.  A
-second GPT-5 pass assigns ordinal quality scores on a 4-point scale based on reasoning
-coherence, appropriate tool selection, and integration of tool outputs.
-
-Unlike IBISAgent, which constructs trajectories from automated click simulation on
-mask annotations, MedVistaGym produces trajectories through live interaction with
-deployed tool services --- capturing the stochastic and imperfect nature of real tool
-outputs.
+The training data of MedVista-R1 is generated using datasets like
+PathVQA~\cite{pathvqa}, SLAKE~\cite{slake}, and VQA-RAD~\cite{vqarad}.
+During live simulation in the environment called MEDVISTAGYM, GPT-5~\cite{gpt5} is
+applied to produce reasoning trajectories along with invoking tools.
+The final trajectories selected are the ones that produce the right answer to the
+question based on the ground truth.
+This is followed by applying the GPT-5~\cite{gpt5} model to assign an ordinal score
+of 1 to 4.
 
 \subsubsection{Training and Reward Design}
 
-MedVista-R1 is trained on InternVL3 (2B and 8B variants) in two stages.  Stage~I uses
-behavioral cloning to establish reliable tool invocation syntax.  Stage~II applies
-GRPO~\cite{deepseekr1} within MEDVISTAGYM.  The reward function comprises three
-components:
+MedVista-R1 is initialised from InternVL3 (2B and 8B).
+Stage one uses behavioural cloning to establish reliable tool invocation syntax.
+Stage two applies GRPO within MEDVISTAGYM with a three-component reward:
 \begin{enumerate}
-  \item \textbf{Format reward} $R_\text{format}$ --- verifies all required special
-        tokens appear in correct order;
-  \item \textbf{Accuracy reward} $R_\text{acc} = \mathbb{1}[\hat{y} = y]$ --- binary
-        match between predicted and ground-truth answer;
-  \item \textbf{Conditional tool-use reward} $R_\text{tool}$ --- granted only when the
-        trajectory invokes at least one external tool \emph{and} produces a correct
-        final answer.
+  \item \textbf{Format reward} $R_\text{format}$: all required special tokens present
+        in the correct order;
+  \item \textbf{Accuracy reward} $R_\text{acc}=\mathbb{1}[\hat{y}=y]$: binary
+        predicted-vs-ground-truth match;
+  \item \textbf{Conditional tool-use reward} $R_\text{tool}$: granted only when the
+        trajectory invokes at least one tool \emph{and} produces the correct answer.
 \end{enumerate}
-The total rollout reward is $R(U) = R_\text{format}(U) + R_\text{acc}(U) + R_\text{tool}(U)$.
+Total: $R(U)=R_\text{format}(U)+R_\text{acc}(U)+R_\text{tool}(U)$.
+The conditional design of $R_\text{tool}$ teaches the agent to understand \emph{when}
+tools genuinely help, rather than calling them indiscriminately.
 
 \subsubsection{Experimental Results}
 
-MedVista-R1-8B achieves 73.70\% accuracy on the in-domain average, outperforming
-comparably-sized tool-augmented baselines without RL by 19.10--24.21\%.  On the
-overall average across all six benchmarks, MedVista-R1-8B achieves 63.09\%, compared
-to 54.66\% for the vanilla InternVL3-8B backbone and 38.88\% for InternVL3-8B with
-tool access but without RL training.
+MedVista-R1-8B reaches 73.70\% on the in-domain average and 63.09\% overall.
+The vanilla InternVL3-8B backbone scores 61.36\% and 54.66\% respectively.
+Most revealing: InternVL3-8B with tool access but no RL scores only 38.88\%---lower
+even than the no-tool baseline.
+This is the clearest demonstration in any of the three papers that tool access is not
+plug-and-play; without the right training, tools introduce confusion rather than
+clarity.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{fig6.png}
-  \caption{Ablation study results for MedVista-R1 across four experimental dimensions:
-   (a)~training stages, (b)~RL algorithm, (c)~reward design, and
-   (d)~multi-agent workflow variants.
-   Adapted from Lu et al.~\cite{medvistagym}.}
+  \caption{Ablation results for MedVista-R1 across four experimental dimensions:
+   (a)~effect of different training stages, (b)~comparison of RL algorithms
+   (SFT, PPO, GRPO), (c)~impact of reward design choices, and (d)~multi-agent
+   workflow alternatives. Adapted from Lu et al.~\cite{medvistagym}.}
   \label{fig:6}
 \end{figure}
 
-% ─────────────────────────────────────────────────────────────
+% ──────────────────────────────────────────────────
 \subsection{MedSAM-Agent: Multi-turn Agentic RL for Interactive Segmentation}
 \label{sec:medsam}
-% ─────────────────────────────────────────────────────────────
+% ──────────────────────────────────────────────────
 
-\subsubsection{Conceptual Foundation}
+\subsubsection{Motivation and Core Idea}
 
-MedSAM-Agent~\cite{medsam_agent}, developed by researchers at the Chinese University
-of Hong Kong, Tencent's Hunyuan Group, the Institute of Automation (Chinese Academy of
-Sciences), Dalian University of Technology, and Stanford University, addresses two
-limitations identified in prior agentic segmentation work: the restriction of the
-action space to sequential point clicks, which lacks spatial flexibility for
-morphologically heterogeneous structures, and the exclusive focus on terminal-outcome
-rewards, which provides no process-level guidance on interaction efficiency.
+Liu et al.~\cite{medsam_agent} share with IBISAgent the goal of autonomous iterative
+segmentation, but address two limitations in prior work.
+First, a pure point-click space lacks flexibility for morphologically heterogeneous
+structures: large organs can be localised far more efficiently with a bounding box.
+Second, existing RLVR frameworks are outcome-focused---they reward final segmentation
+quality but ignore whether the agent took redundant steps, which matters for both
+training convergence and clinical deployment.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{fig7.png}
-  \caption{Overview of the MedSAM-Agent framework: trajectory generation with hybrid
-   Box-to-Point and Sequential-Click strategies, two-stage training pipeline, and
-   fine-grained reward design.
+  \caption{Overview of the MedSAM-Agent framework.
+   The upper portion shows the hybrid trajectory generation strategy
+   (Box-to-Point and Sequential-Click workflows) with progress-constrained sampling
+   and IoU-based filtering.
+   The lower portion shows the two-stage training pipeline (SFT cold-start and
+   GRPO-based RL) and the five-component process-aware reward design.
+   A qualitative polyp segmentation example illustrates multi-turn refinement.
    Adapted from Liu et al.~\cite{medsam_agent}.}
   \label{fig:7}
 \end{figure}
 
 \subsubsection{Action Space and Observation}
 
-The MedSAM-Agent action space covers three primitive operations:
-\begin{itemize}
-  \item \textbf{\texttt{add\_bbox}} --- $[x_1, y_1, x_2, y_2]$ bounding box for global
-        spatial context;
-  \item \textbf{\texttt{add\_point}} --- $[x, y]$ with polarity $\alpha \in \{+1, -1\}$
-        for local refinement;
-  \item \textbf{\texttt{stop\_action}} --- signals that the mask meets clinical quality
-        standards.
-\end{itemize}
-The observation $o_t$ is the updated predicted mask $M_t$ generated by calling the
-segmentation backend (MedSAM2~\cite{medsam2} or IMISNet~\cite{imisnet}).  A key
-architectural decision is the omission of a dedicated \texttt{<think>} token during
-RL, forcing the model to internalize spatial reasoning directly within action
-generation.
+MedSAM-Agent's action vocabulary has three primitives.
+\texttt{add\_bbox} submits $[x_1,y_1,x_2,y_2]$ for global spatial context;
+\texttt{add\_point} submits $[x,y]$ with polarity $\alpha\in\{+1,-1\}$ for local
+refinement; \texttt{stop\_action} terminates the loop when the mask is satisfactory.
+The observation $o_t$ represents the updated predicted mask $M_t$, which is generated
+by the segmentation backend---either MedSAM2~\cite{medsam2} or
+IMISNet~\cite{imisnet}.
+Instead of introducing a separate \texttt{<think>} token during reinforcement learning,
+the model is intentionally designed without it.
+This forces the system to embed its spatial reasoning directly into the action
+generation process, rather than relying on an explicit intermediate reasoning step.
+As a result, decision-making becomes more tightly coupled with the actual prediction
+behavior, leading to a more efficient and integrated learning mechanism.
 
 \subsubsection{Hybrid Trajectory Generation}
 
-The trajectory generation algorithm implements two parallel paradigms.  In the
-Box-to-Point workflow, the initial action $a_0$ is a bounding box with random jitter
-$\epsilon \sim U(-\delta, \delta)$ to simulate human imprecision.  In the
-Sequential-Click workflow, $a_0$ is a centroid click.  All subsequent refinement steps
-follow a unified error-driven mechanism based on distance transforms of FN and FP
-regions.
+Two parallel generation workflows are implemented.
+In the Box-to-Point workflow, $a_0$ is a bounding box from the ground-truth mask
+boundary with jitter $\epsilon\sim U(-\delta,\delta)$ to simulate human imprecision.
+In the Sequential-Click workflow, $a_0$ is a centroid click.
+All subsequent steps use the same error-driven mechanism: compute FN and FP regions,
+apply a distance transform, and sample the next click from the centroid of the larger
+error region.
 
-A progress-constrained sampling mechanism enforces $\Delta\text{IoU} \geq \tau$
-(default $\tau = 0.04$).  If a candidate action fails this test, the simulator
-resamples up to $N = 5$ positions.  Trajectories failing a minimum overall IoU
-threshold are discarded, yielding a dataset of 449K--519K monotonically improving
-sequences.
+A progress-constrained mechanism requires $\Delta\text{IoU}\geq\tau$ (default 0.04)
+per step; the simulator resamples up to $N=5$ positions if the constraint is not met.
+After global IoU filtering, the SFT dataset contains 449K--519K monotonically
+improving trajectories.
 
-\subsubsection{Clinical-Fidelity Process Reward Design}
+\subsubsection{Process-Aware Reward Design}
 
-The total reward is the weighted composite:
 \[
-  R_\text{total} = w_1 \cdot R_\text{fmt} +
-    w_2 \cdot \text{clip}\!\left(R_\text{qual} + \lambda_1 R_\text{imp}
-      - \lambda_2 R_\text{over} - \lambda_3 R_\text{cost},\; 0,\, 1\right)
+  R_\text{total} = w_1\cdot R_\text{fmt}
+    + w_2\cdot\text{clip}\!\left(R_\text{qual}
+      +\lambda_1 R_\text{imp}-\lambda_2 R_\text{over}-\lambda_3 R_\text{cost},\;0,\;1\right)
 \]
-where the five components are:
 \begin{itemize}
-  \item $R_\text{fmt}$: format reward (0.5 for each of: tool invocation and stop action);
-  \item $R_\text{qual} = w_\text{iou}\cdot\text{IoU}_\text{final} +
-        w_\text{dice}\cdot\text{Dice}_\text{final}$: quality reward;
-  \item $R_\text{imp} = \sum_{t=1}^{N-1} \max(0, \text{IoU}_t - \text{IoU}_{t-1})$:
+  \item $R_\text{fmt}$: 0.5 points each for a valid tool invocation and stop action;
+  \item $R_\text{qual}=w_\text{iou}\cdot\text{IoU}_\text{final}
+        +w_\text{dice}\cdot\text{Dice}_\text{final}$: quality on the final mask;
+  \item $R_\text{imp}=\sum_{t=1}^{N-1}\max(0,\text{IoU}_t-\text{IoU}_{t-1})$:
         Progressive Improvement Bonus;
-  \item $R_\text{over} = \text{IoU}_\text{max} - \text{IoU}_\text{final}$: Overshoot
-        Penalty;
-  \item $R_\text{cost}$: linear Tool-Cost Penalty proportional to trajectory length.
+  \item $R_\text{over}=\text{IoU}_\text{max}-\text{IoU}_\text{final}$: Overshoot
+        Penalty for quality regression after the peak;
+  \item $R_\text{cost}$: linear Tool-Cost Penalty proportional to sequence length.
 \end{itemize}
+The Overshoot Penalty, absent from the other two papers, teaches an explicit stopping
+policy by penalising any further interaction after peak quality.
 
 \subsubsection{Experimental Results}
 
-MedSAM-Agent is evaluated across 21 open-source datasets spanning 6 imaging
-modalities.  On the overall average, MedSAM-Agent with MedSAM2 achieves Dice~= 0.794
-and IoU~= 0.705, compared to Dice~= 0.776 for UniBiomed~\cite{unibiomed},
-Dice~= 0.482 for Citrus-V~\cite{citrusv}, and Dice~= 0.353 for
-Seg-R1~\cite{segr1}.  Zero-shot tool generalization experiments reveal that an agent
-trained with MedSAM2 trajectories achieves competitive performance with IMISNet and
-SAM2 backends at inference time.
+MedSAM-Agent is evaluated across 21 datasets covering six modalities.
+With MedSAM2, it achieves overall Dice~=~0.794 and IoU~=~0.705, versus 0.776 Dice
+for UniBiomed, 0.482 for Citrus-V, and 0.353 for Seg-R1~\cite{segr1}.
+Mean interaction turns: 2.11 with full SFT+RL versus 2.35 with SFT only, confirming
+that process-aware rewards genuinely reduce unnecessary steps.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\linewidth]{fig8.png}
+  \includegraphics[width=0.80\linewidth]{fig8.png}
   \caption{Multi-turn interaction analysis for MedSAM-Agent across four datasets.
-   The blue line shows mean IoU per turn; horizontal lines mark single-turn
-   ground-truth baselines (box and centroid point).  Green/red/grey bar segments
-   show improved, declined, and unchanged IoU proportions at each turn.
+   The blue line tracks mean IoU per turn; horizontal lines mark single-turn
+   ground-truth baselines (box and centroid click).
+   The stacked bars show the fraction of samples with improving (green), declining
+   (red), and unchanged (grey) IoU at each turn.
    Adapted from Liu et al.~\cite{medsam_agent}.}
   \label{fig:8}
 \end{figure}
 
-% ─────────────────────────────────────────────────────────────
+Zero-shot tool generalisation experiments also show that an agent trained with MedSAM2
+achieves competitive performance when switched to IMISNet or SAM2 at inference, with
+IoU drops under 0.02 in most settings.
+
+% =============================================================
 \section{Discussion}
 \label{sec:discussion}
-% ─────────────────────────────────────────────────────────────
+% =============================================================
 
 \subsection{Summary Comparison}
 
-Table~\ref{tab:comparison} presents a structured comparison of the three reviewed
-systems alongside key baselines, organised by action space, interaction framework,
-training approach, and reported benchmark performance.
+Table~\ref{tab:comparison} places the three reviewed systems alongside key baselines.
 
-% ── TABLE 1 ─────────────────────────────────────────────────
-% Plain booktabs style — no colour, no colortbl.
-% Exactly the style used in top-tier venues (CVPR, NeurIPS, etc.)
-% ────────────────────────────────────────────────────────────
 \begin{table}[htbp]
 \centering
-\caption{Comparison of agentic segmentation systems and representative baselines.
-Bold entries indicate the three systems under review. ``--'' denotes not applicable.}
+\caption{How the three main systems compare with representative baseline approaches.
+Methods shown in bold are the focus of this review. Where data is unavailable or
+irrelevant, we use ``--''.}
 \label{tab:comparison}
 \renewcommand{\arraystretch}{1.25}
 \footnotesize
 \begin{tabular}{@{}p{2.8cm}p{2.2cm}p{1.7cm}p{1.9cm}p{1.5cm}p{1.4cm}c@{}}
 \toprule
-\textbf{Method} & \textbf{Action Space} & \textbf{Interaction} & \textbf{Training}
-& \textbf{In-Domain} & \textbf{OOD} & \textbf{Params} \\
+\textbf{Method} & \textbf{Action Space} & \textbf{Interaction}
+& \textbf{Training} & \textbf{In-Domain} & \textbf{OOD} & \textbf{Params} \\
 \midrule
-\addlinespace[0.4ex]
-\multicolumn{7}{@{}l}{\textit{Reviewed systems (agentic, multi-turn)}} \\
-\addlinespace[0.25ex]
-
-\textbf{IBISAgent}~\cite{ibisagent}
-& Click points & MDP & SFT + GRPO
-& 85.58\% IoU & 72.09\% IoU & 7B \\
-\addlinespace[0.15ex]
-
-\textbf{MedSAM-Agent}~\cite{medsam_agent}
-& Box + points & MDP & SFT + GRPO
-& 0.794 Dice & 0.720 Dice & 8B \\
-\addlinespace[0.15ex]
-
-\textbf{MedVistaGym}~\cite{medvistagym}
-& Tool API calls & POMDP & SFT + GRPO
-& 81.36\% Acc. & 56.43\% Acc. & 8B \\
-\addlinespace[0.4ex]
-
+\multicolumn{7}{@{}l}{\textit{The three agent-based systems with iterative refinement}} \\[2pt]
+\textbf{IBISAgent}~\cite{ibisagent}     & Click points   & MDP   & SFT+GRPO & 85.58\% IoU  & 72.09\% IoU  & 7B \\
+\textbf{MedSAM-Agent}~\cite{medsam_agent} & Box+points   & MDP   & SFT+GRPO & 0.794 Dice   & 0.720 Dice   & 8B \\
+\textbf{MedVistaGym}~\cite{medvistagym} & Tool API calls & POMDP & SFT+GRPO & 81.36\% Acc. & 56.43\% Acc. & 8B \\
 \midrule
-\addlinespace[0.4ex]
-\multicolumn{7}{@{}l}{\textit{Baselines (implicit-token, single-pass)}} \\
-\addlinespace[0.25ex]
-
-LISA~\cite{lisa}
-& \texttt{<SEG>} token & Single-pass & SFT
-& Low & Very low & 7B \\
-\addlinespace[0.15ex]
-
-UniBiomed~\cite{unibiomed}
-& \texttt{<SEG>} token & Single-pass & SFT
-& 0.776 Dice & 0.317 Dice & 1B \\
-\addlinespace[0.4ex]
-
+\multicolumn{7}{@{}l}{\textit{Baselines (implicit-token, single-pass)}} \\[2pt]
+LISA~\cite{lisa}           & \texttt{<SEG>} token & Single-pass & SFT  & Low         & Very low    & 7B \\
+UniBiomed~\cite{unibiomed} & \texttt{<SEG>} token & Single-pass & SFT  & 0.776 Dice  & 0.317 Dice  & 1B \\
 \midrule
-\addlinespace[0.4ex]
-\multicolumn{7}{@{}l}{\textit{Baselines (interactive, single-turn)}} \\
-\addlinespace[0.25ex]
-
-MedSAM2~\cite{medsam2}
-& Bounding box & Single-turn & None
-& 82.07\% IoU & 71.30\% IoU & -- \\
-\addlinespace[0.15ex]
-
-MMedAgent~\cite{mmedagent}
-& Tool calls & Single-turn & SFT
-& 36.13\% IoU & 26.54\% IoU & 7B \\
-
+\multicolumn{7}{@{}l}{\textit{Baselines (interactive, single-turn)}} \\[2pt]
+MedSAM2~\cite{medsam2}    & Bounding box  & Single-turn & None & 82.07\% IoU & 71.30\% IoU & --  \\
+MMedAgent~\cite{mmedagent} & Tool calls    & Single-turn & SFT  & 36.13\% IoU & 26.54\% IoU & 7B  \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \FloatBarrier
-\vspace{1cm}
 
 \subsection{Dataset Scale and Modality Coverage}
 
-Table~\ref{tab:datasets} summarises the dataset scope of each system.
+Table~\ref{tab:datasets} summarises dataset characteristics.
 
-\vspace{0.4cm}
-
-% ── TABLE 2 ─────────────────────────────────────────────────
 \begin{table}[htbp]
 \centering
-\caption{Dataset characteristics for each reviewed system.
-SFT = supervised fine-tuning stage; RL = reinforcement learning stage.}
+\caption{Training data characteristics across the three systems.
+Note: SFT refers to the supervised fine-tuning stage, while RL indicates the
+reinforcement learning phase.}
 \label{tab:datasets}
 \renewcommand{\arraystretch}{1.25}
 \footnotesize
@@ -868,230 +764,215 @@ SFT = supervised fine-tuning stage; RL = reinforcement learning stage.}
 \textbf{System} & \textbf{Primary Dataset(s)} & \textbf{Image Scale}
 & \textbf{Modalities} & \textbf{Training Samples} \\
 \midrule
-\addlinespace[0.25ex]
-
 IBISAgent~\cite{ibisagent}
-& BioMedParseData~\cite{biomedparse}
-& 3.4M images
-& 9
-& 456K SFT + 888K RL \\
-\addlinespace[0.15ex]
-
+  & BioMedParseData~\cite{biomedparse} & 3.4M images & 9 & 456K SFT + 888K RL \\
 MedSAM-Agent~\cite{medsam_agent}
-& 21 open-source datasets
-& 419K images
-& 6
-& 449K SFT + 9K RL \\
-\addlinespace[0.15ex]
-
+  & 21 open-source datasets & 419K images & 6 & 449K SFT + 9K RL \\
 MedVistaGym~\cite{medvistagym}
-& PathVQA, SLAKE, VQA-RAD + OOD
-& $\approx$10K QA pairs
-& Mixed
-& $\approx$10.5K SFT \\
-
+  & PathVQA, SLAKE, VQA-RAD + OOD & $\approx$10K QA pairs & Mixed & $\approx$10.5K SFT \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-IBISAgent commands the largest training corpus in terms of raw image count (456K SFT
-samples drawn from a 3.4M-image pool, plus 888K RL samples), reflecting the
-data-intensive nature of click-trajectory learning.  MedSAM-Agent operates at a
-comparable scale for SFT and employs a carefully curated 9K high-quality subset for
-RL.  MedVistaGym/MedVista-R1 works with a substantially smaller curated corpus,
-compensating through the richness of multi-tool reasoning trajectories.
+IBISAgent uses the biggest training set in terms of the number of raw images, with
+456,000 images from a collection of 3.4 million used for SFT, along with 888,000 images
+for RL, thus emphasizing the data-oriented nature of click trajectory-based learning
+models.
+MedSAM-Agent is of a similar magnitude in terms of SFT and uses carefully selected
+9,000 images for RL.
+In turn, MedVistaGym/MedVista-R1 uses a relatively small dataset, yet makes up for it
+with the diversity of reasoning trajectories for multiple tools.
 
 \subsection{Action Space Comparison}
 
-The three systems differ most visibly in how they define the agent's action space.
-IBISAgent restricts actions to normalized point clicks together with a termination
-signal.  This simplicity enables fine-grained spatial reasoning but means the agent
-must initiate every segmentation from an empty mask --- a potentially inefficient
-starting point for large, well-defined anatomical structures.
+The most significant difference between the three approaches is in the definition of
+the agent's action space.
+IBISAgent only allows actions in the form of normalized point-click interactions paired
+with a stop signal.
+Such a simple interaction model allows for precise spatial reasoning but forces the
+agent to start every segmentation process from an empty mask, which is sometimes
+inefficient for large anatomically distinct structures.
 
-MedSAM-Agent addresses this limitation by adding bounding box initialization.  The
-ablation in~\cite{medsam_agent} confirms that this addition reduces average trajectory
-length from 2.94 to 2.06 steps and improves final IoU from 0.623 to 0.649, with the
-hybrid strategy achieving 0.686.  MedVistaGym/MedVista-R1 operates at a qualitatively
-different level of abstraction, its action space encompassing structured JSON tool
-invocation calls rather than pixel-level spatial coordinates.
+MedSAM-Agent overcomes this drawback by adding bounding box initialization.
+According to~\cite{medsam_agent}, the use of bounding boxes significantly decreases
+the average number of actions per trajectory from 2.94 to 2.06 and increases the
+intersection-over-union value of the final result from 0.623 to 0.649, where the
+hybrid method achieves 0.686.
+
+MedVistaGym/MedVista-R1 takes a completely different approach to defining the action
+space since it uses high-level JSON invocations of tools instead of low-level
+point-click interactions.
 
 \subsection{Reward Function Design}
 
-IBISAgent employs the richest reward signal --- five components covering format, final
-accuracy, per-click spatial validity, per-step monotonic improvement, and trajectory
-length.  The region-based click placement reward $S_\text{click}$ prevents the agent
-from discovering degenerate click policies that happen to produce correct masks by
-coincidence.  MedSAM-Agent's Overshoot Penalty $R_\text{over}$ provides a unique form
-of stopping criterion supervision not present in the other two systems.
-MedVistaGym/MedVista-R1 employs the simplest reward structure, with the conditional
-design of $R_\text{tool}$ being its defining innovation.
+IBISAgent's five-component reward is the most elaborate, with the region-based click
+placement reward $S_\text{click}$ being particularly important: it prevents the agent
+from finding degenerate policies where accidentally well-placed clicks produce correct
+masks by coincidence.
+MedSAM-Agent's Overshoot Penalty is unique---it provides an explicit stopping criterion
+beyond the softer trajectory length penalty in IBISAgent.
+MedVistaGym's reward is the sparsest, but the conditional design of $R_\text{tool}$
+cleverly prevents learning to call tools without actually using their outputs.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.92\linewidth]{fig9.png}
-  \caption{IoU reward training curve for IBISAgent during reinforcement learning,
-   demonstrating steady, stable improvement across 220 training steps (mean = 2.26,
-   max = 2.69 at step 215).
+  \caption{IoU reward training curve for IBISAgent across 220 RL steps
+   (mean~=~2.26, peak~=~2.69 at step~215).
+   The curve rises steadily with no signs of reward hacking or policy collapse,
+   confirming stable training throughout.
    Adapted from Jiang et al.~\cite{ibisagent}.}
   \label{fig:9}
 \end{figure}
 
-\subsection{Generalization and Out-of-Domain Performance}
+\subsection{Generalisation to Unseen Distributions}
 
-Out-of-domain generalization is the critical test of any segmentation system.
-IBISAgent demonstrates particularly impressive zero-shot generalization: on the
-held-out in-house dataset drawn from three medical centers and comprising 7 cancer
-types, it achieves IoU~= 72.09\%, outperforming all baselines by more than 36
-percentage points.  MedSAM-Agent demonstrates zero-shot tool agnosticism --- an agent
-trained with MedSAM2 trajectories achieves competitive performance with IMISNet and
-SAM2 backends at inference time.  MedVistaGym/MedVista-R1 achieves 52.48\% accuracy
-on the OOD average with no out-of-domain samples in training.
+IBISAgent's held-out in-house dataset---from three medical centres covering seven
+cancer types not seen during training---is the most demanding test of any of the three
+papers.
+The 72.09\% IoU achieved there, versus under 36\% for all LISA-style baselines, is a
+compelling result.
+MedSAM-Agent's cross-tool experiments show the learned interaction policy is at least
+partly tool-agnostic, which matters because a clinical site may not have the specific
+backend used in training.
+MedVistaGym achieves 52.48\% OOD accuracy with no OOD samples in training.
 
 \subsection{Computational Overhead}
 
-Multi-turn agentic interaction comes with an unavoidable computational cost.
-IBISAgent reports an average inference time of 28.70 seconds per sample, compared to
-5.82\,s for UniBiomed and 3.14\,s for MedPLIB, though within clinically acceptable
-bounds for non-emergent diagnostic tasks.  MedSAM-Agent achieves an average of 2.11
-interaction turns in the full SFT+RL configuration, demonstrating that process rewards
-substantially reduce unnecessary interaction steps.  MedVistaGym/MedVista-R1 limits
-tool calls to a maximum of 6 per query.
+IBISAgent reports 28.70 seconds per sample on an A100 GPU, roughly three times the
+cost of single-pass baselines.
+MedSAM-Agent's process rewards keep the mean trajectory at 2.11 turns, limiting
+overhead.
+MedVistaGym caps tool calls at six per query and finds that longer reasoning
+trajectories correlate with accuracy, pointing to a depth-versus-cost trade-off.
 
-% ─────────────────────────────────────────────────────────────
+% =============================================================
 \section{Integrative Synthesis and Future Frontiers}
 \label{sec:synthesis}
-% ─────────────────────────────────────────────────────────────
+% =============================================================
 
-\subsection{Convergent Design Principles}
+\subsection{What All Three Systems Agree On}
 
-Despite emerging from independent research groups with different application foci, the
-three systems converge on several design principles that appear to reflect genuine
-insights about agentic medical AI.
+Several design choices appear in all three papers despite the groups working
+independently---suggesting they reflect genuine insights rather than preferences.
 
-First, all three systems adopt a two-stage training paradigm combining supervised
-fine-tuning cold-start with RL.  The SFT stage establishes syntactic and semantic
-priors necessary for coherent tool invocation, while RL enables the agent to optimize
-for long-horizon outcomes beyond what demonstration learning can achieve.  Across all
-three ablation studies, the full SFT+RL combination outperforms either stage alone by
-substantial margins.
+Two-stage training (SFT cold-start followed by RL) substantially outperforms either
+stage alone in every ablation across all three papers.
+The SFT stage provides the syntactic and semantic scaffolding without which RL
+exploration is too unstable to converge on good policies.
 
-Second, all three systems treat the observation as a visual object rather than a
-symbolic summary.  IBISAgent and MedSAM-Agent overlay the current mask on the original
-image, re-encoding this composite through the vision encoder at each step.
-MedVistaGym passes processed images (zoomed regions, segmentation masks) alongside
-structured text.  This consistent design choice reflects the recognition that
-pixel-level reasoning requires continuous visual access to the evolving segmentation
-state.
+All three systems also re-encode the evolving visual state at each step rather than
+relying on a fixed embedding from the initial forward pass.
+The shared intuition is that pixel-level reasoning cannot be done from a single static
+representation when the task involves iterative boundary refinement.
 
-Third, all three papers demonstrate that tool access without disciplined policy
-training is insufficient or even harmful.  These convergent findings constitute strong
-evidence for the necessity of structured policy training in agentic medical AI --- a
-finding that practitioners should carefully consider when designing deployment systems.
+Finally, all three papers show that tool access without structured policy training is
+neutral or harmful.
+Simply exposing a capable VLM to medical tools will not produce good results---the
+interaction policy must be explicitly trained through RL.
 
-\subsection{Open Research Challenges}
+\subsection{Open Challenges}
 
-Several important challenges remain unresolved across all three systems.  The extension
-to 3D volumetric data is acknowledged by all three papers as a priority future
-direction.  Extending multi-turn agentic reasoning to 3D will require rethinking the
-action space (adding a $z$-coordinate to click prompts), the observation representation
-(volumetric mask overlays), and the reward design (3D volumetric IoU rather than
-slice-level IoU).
+A move to three-dimensional multi-turn agentic reasoning requires a reconsideration of
+the action space (including a $z$-axis component for the clicks), the observation
+representation (with mask overlay volumes), and the reward design (using 3D volumetric
+IoU instead of slice-by-slice IoU).
+The limitation in constructing training data remains a major problem.
+IBISAgent requires automatic generation of clicks in 3.4 million labeled images,
+reasoning via GPT-5, and manual inspection of the produced trace sequences.
+MedSAM-Agent needs trajectory pruning, ensuring monotonic increase in IoU.
+MedVistaGym calls for real-time invocation of 15 different tool services while
+producing the training data.
+The effort involved is considerable in each case, which might be hard to reproduce in
+a limited research setting.
 
-The training data construction bottleneck remains significant.  IBISAgent requires
-automated click simulation on 3.4 million annotated images, GPT-5 reasoning synthesis,
-and human review of generated traces.  MedSAM-Agent requires trajectory filtering to
-ensure monotonic IoU improvement.  MedVistaGym requires live deployment of 15 tool
-services during data generation.  Each of these pipelines involves substantial
-engineering overhead that may be difficult to replicate in resource-constrained
-research settings.
-
-The knowledge gap failure mode identified in MedVistaGym --- where the agent correctly
-invokes tools and correctly interprets their outputs but arrives at an incorrect
-diagnosis due to incorrect medical concept knowledge --- reveals that tool augmentation
-and RL cannot substitute for domain-specific factual grounding.
+As shown by the knowledge gap failure mode in MedVistaGym, where the agent successfully
+applies the tools and understands the results yet produces an inaccurate diagnosis
+because of lack of knowledge in domain concepts, augmenting with tools and using
+reinforcement learning is no substitute for factual knowledge.
 
 \begin{figure}[H]
   \centering
   \begin{subfigure}{0.95\linewidth}
     \includegraphics[width=\linewidth]{fig10a.png}
     \caption{Insufficient visual evidence: the agent correctly zooms into the left
-     lung field but misses a subtle abnormality below the visual resolution threshold.}
-  \end{subfigure}
-  \\[8pt]
+     lung field but misses a subtle abnormality below the resolution of the tool
+     at the applied scale.}
+  \end{subfigure}\\[8pt]
   \begin{subfigure}{0.95\linewidth}
     \includegraphics[width=\linewidth]{fig10b.png}
-    \caption{Knowledge gap: all three tools execute correctly and localize the
-     fracture, but incorrect medical concept knowledge leads to a wrong diagnosis
-     (Jones vs.\ Smith fracture).}
+    \caption{Knowledge gap: all three tools locate the fracture correctly, but the
+     agent confuses Jones and Smith fracture definitions and outputs the wrong
+     eponym.}
   \end{subfigure}
-  \caption{Representative failure modes in MedVistaGym.
+  \caption{Two representative failure modes in MedVistaGym that highlight the limits
+   of tool-augmented perception and the gap that domain knowledge must fill.
    Adapted from Lu et al.~\cite{medvistagym}.}
   \label{fig:10}
 \end{figure}
 
-Finally, none of the three systems has been evaluated in a prospective clinical setting
-with real patients and real-time constraints.  Latency guarantees and adaptive stopping
-mechanisms will be essential for clinical deployment.
+\subsection{Promising Directions}
 
-\subsection{Directions for Future Research}
+The convergence of point-and-click and tool invocation action spaces, whereby
+IBISAgent's precise click space is combined with MedVistaGym's diverse set of tools,
+represents a natural extension which is currently not accomplished by either system.
+Process reward design needs additional exploration, particularly regarding the
+overshoot penalty.
 
-Based on the analysis above, we identify several promising directions for future work.
-The unification of point-click and tool-invocation action spaces --- combining
-IBISAgent's spatial click precision with MedVistaGym's heterogeneous tool library ---
-represents a natural integration that neither system currently realizes.
+The use of a broader measure of rewards, considering both the validity of click
+positions, improvements in quality margins, optimal stopping conditions, and the
+suitability of the tools, will result in higher density training signals throughout
+the process.
 
-Process reward design merits further investigation.  MedSAM-Agent's overshoot penalty
-and IBISAgent's region-based click placement reward each address qualitatively different
-aspects of decision quality.  A more comprehensive process reward that simultaneously
-captures click spatial validity, marginal quality improvement, optimal stopping, and
-tool selection appropriateness would provide denser training signal throughout the
-trajectory.
+There is an immediate need for establishing benchmarking standards for the three
+systems to be evaluated against each other.
+Currently, IBISAgent~\cite{ibisagent}, MedVistaGym~\cite{medvistagym}, and
+MedSAM-Agent~\cite{medsam_agent} are evaluated separately using different metrics,
+making it impossible to compare them without recreating all three systems using the
+same benchmarks.
 
-The development of standardized evaluation protocols across the three systems is
-urgently needed.  Currently, IBISAgent, MedVistaGym, and MedSAM-Agent are evaluated
-on different benchmarks with different metrics, making direct cross-system comparison
-impossible without re-implementing all three systems on a common evaluation suite.
-
-% ─────────────────────────────────────────────────────────────
+% =============================================================
 \section{Conclusion}
 \label{sec:conclusion}
-% ─────────────────────────────────────────────────────────────
+% =============================================================
 
-This survey has examined three independently developed agentic systems for medical
-image segmentation and reasoning --- IBISAgent~\cite{ibisagent},
-MedVistaGym/MedVista-R1~\cite{medvistagym}, and MedSAM-Agent~\cite{medsam_agent} ---
-through a common analytical lens covering conceptual motivation, architectural design,
-training methodology, experimental validation, and practical limitations.
+This paper studies the three independently designed agentic systems for medical image
+segmentation and reasoning---IBISAgent~\cite{ibisagent},
+MedVistaGym/MedVista-R1~\cite{medvistagym}, and
+MedSAM-Agent~\cite{medsam_agent}---using a common analytical framework considering
+concept motivation, architectural design, training strategy, empirical validation, and
+potential limitations.
+As a group, the three systems show that viewing medical image analysis through the lens
+of an iterative, feedback-guided decision-making task leads to significant and robust
+performance gains on various benchmark datasets and imaging modalities.
+The commonality of the two-stage SFT+RL training paradigm, visual observation encoding,
+and multi-dimensional reward scheme in all three independent systems suggests that they
+represent fundamental solutions to the core issues of clinical agentic AI, rather than
+arbitrary engineering decisions.
 
-The three systems collectively establish that reformulating medical image analysis as
-an iterative, feedback-driven decision-making process --- rather than as a static
-single-pass prediction --- yields substantial and consistent improvements across diverse
-benchmarks and imaging modalities.  The convergent adoption of two-stage SFT+RL
-training, visual observation re-encoding, and multi-component reward design across all
-three independent projects suggests that these are principled solutions to the
-fundamental challenges of agentic clinical AI, not idiosyncratic design choices.
+On the other hand, the three systems differ from each other in several aspects due to
+their different trade-offs between clinical realism and computational efficiency.
+IBISAgent's exclusive use of point-and-click actions, along with a highly sophisticated
+five-dimensional reward function, ensures superior segmentation performance but results
+in lengthy average trajectories.
+MedSAM-Agent's use of both bounding box and point selection mechanisms, paired with a
+process-oriented reward function, achieves outstanding efficiency (2.11 average number
+of turns) with decent accuracy.
+The tool diversity mechanism adopted by MedVistaGym provides flexibility in multimodal
+reasoning but requires a larger action space, which demands appropriate training
+strategies.
 
-At the same time, the systems differ in important ways that reflect different
-prioritizations of clinical realism versus computational tractability.  IBISAgent's
-pure point-click action space and rich five-component reward enable exceptionally high
-segmentation accuracy but at the cost of longer average trajectories.  MedSAM-Agent's
-hybrid box-and-point strategy and process-focused reward achieve excellent efficiency
-(2.11 average turns) while maintaining competitive accuracy.  MedVistaGym's
-tool-diversification approach enables flexible multi-modal reasoning at the cost of a
-more complex action space that requires careful training.
+The community is currently at a critical juncture.
+The fundamental design principles for agentic medical image analysis have been
+well-established.
+Challenges that remain include extending agentic image analysis to 3D volume imaging,
+grounding knowledge, prospective clinical validation, and standardized evaluation
+criteria.
 
-The field stands at an inflection point.  The foundational design principles for
-agentic medical image analysis are now established.  The remaining challenges --- 3D
-volumetric extension, knowledge grounding, prospective clinical validation, and
-standardized evaluation --- represent the next generation of research problems that the
-community must address if these systems are to transition from laboratory demonstrations
-to clinical tools.
-
-% ─────────────────────────────────────────────────────────────
+% =============================================================
 \section*{References}
 \addcontentsline{toc}{section}{References}
-% ─────────────────────────────────────────────────────────────
+% =============================================================
 
 \begin{thebibliography}{99}
 
@@ -1117,14 +998,12 @@ Agentic Reinforcement Learning,''
 \bibitem{lisa}
 X.~Lai, Z.~Tian, Y.~Chen, Y.~Li, Y.~Yuan, S.~Liu, and J.~Jia,
 ``LISA: Reasoning Segmentation via Large Language Model,''
-in \textit{Proc.\ IEEE/CVF Conf.\ Computer Vision and Pattern Recognition (CVPR)},
-pp.~9579--9589, 2024.
+in \textit{Proc.\ IEEE/CVF CVPR}, pp.~9579--9589, 2024.
 
 \bibitem{unibiomed}
 L.~Wu, Y.~Nie, S.~He, J.~Zhuang, L.~Luo, N.~Mahboobani, V.~Vardhanabhuti,
 R.~C.~K.~Chan, Y.~Peng, P.~Rajpurkar et al.,
-``UniBiomed: A Universal Foundation Model for Grounded Biomedical Image
-Interpretation,''
+``UniBiomed: A Universal Foundation Model for Grounded Biomedical Image Interpretation,''
 \textit{arXiv preprint arXiv:2504.21336}, 2025.
 
 \bibitem{medsam2}
@@ -1172,8 +1051,7 @@ for Clinical Reasoning,''
 \bibitem{deepseekr1}
 D.~Guo, D.~Yang, H.~Zhang, J.~Song, R.~Zhang, R.~Xu, Q.~Zhu, S.~Ma, P.~Wang, X.~Bi
 et al.,
-``DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement
-Learning,''
+``DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning,''
 \textit{arXiv preprint arXiv:2501.12948}, 2025.
 
 \bibitem{vilam3}
@@ -1190,37 +1068,32 @@ N.~Fathi, A.~Kumar, and T.~Arbel,
 \bibitem{qwen25vl}
 S.~Bai, K.~Chen, X.~Liu, J.~Wang, W.~Ge, S.~Song, K.~Dang, P.~Wang, S.~Wang,
 J.~Tang et al.,
-``Qwen2.5-VL Technical Report,''
-\textit{arXiv preprint arXiv:2502.13923}, 2025.
+``Qwen2.5-VL Technical Report,'' \textit{arXiv preprint arXiv:2502.13923}, 2025.
 
 \bibitem{biomedparse}
 T.~Zhao, Y.~Gu, J.~Yang, N.~Usuyama, H.~H.~Lee, S.~Kiblawi, T.~Naumann, J.~Gao,
 A.~Crabtree, J.~Abel et al.,
 ``BioMedParse: A Biomedical Foundation Model for Image Parsing of Everything Everywhere
-All at Once,''
-\textit{arXiv preprint arXiv:2405.12971}, 2024.
+All at Once,'' \textit{arXiv preprint arXiv:2405.12971}, 2024.
 
 \bibitem{deepinteractive}
 N.~Xu, B.~Price, S.~Cohen, J.~Yang, and T.~S.~Huang,
 ``Deep Interactive Object Selection,''
-in \textit{Proc.\ IEEE Conf.\ Computer Vision and Pattern Recognition}, pp.~373--381,
-2016.
+in \textit{Proc.\ IEEE Conf.\ Computer Vision and Pattern Recognition}, pp.~373--381, 2016.
 
 \bibitem{gemini25}
 G.~Comanici, E.~Bieber, M.~Schaekermann et al.,
-``Gemini 2.5: Pushing the Frontier with Advanced Reasoning, Multimodality, Long
-Context, and Next Generation Agentic Capabilities,''
+``Gemini 2.5: Pushing the Frontier with Advanced Reasoning, Multimodality, Long Context,
+and Next Generation Agentic Capabilities,''
 \textit{arXiv preprint arXiv:2507.06261}, 2025.
 
 \bibitem{gpt5}
-OpenAI,
-``GPT-5 Chat,'' \url{https://chat.openai.com}, 2025. Accessed: 2025-09-17.
+OpenAI, ``GPT-5 Chat,'' \url{https://chat.openai.com}, 2025. Accessed: 2025-09-17.
 
 \bibitem{openreasonerzero}
 J.~Hu, Y.~Zhang, Q.~Han, D.~Jiang, X.~Zhang, and H.-Y.~Shum,
 ``Open-Reasoner-Zero: An Open Source Approach to Scaling Up Reinforcement Learning on
-the Base Model,''
-\textit{arXiv preprint arXiv:2503.24290}, 2025.
+the Base Model,'' \textit{arXiv preprint arXiv:2503.24290}, 2025.
 
 \bibitem{pathvqa}
 X.~He, Y.~Zhang, L.~Mou, E.~Xing, and P.~Xie,
@@ -1230,13 +1103,11 @@ X.~He, Y.~Zhang, L.~Mou, E.~Xing, and P.~Xie,
 \bibitem{slake}
 B.~Liu, L.-M.~Zhan, L.~Xu, L.~Ma, Y.~Yang, and X.-M.~Wu,
 ``SLAKE: A Semantically-Labeled Knowledge-Enhanced Dataset for Medical Visual Question
-Answering,''
-in \textit{IEEE Int.\ Symp.\ Biomedical Imaging (ISBI)}, pp.~1650--1654, 2021.
+Answering,'' in \textit{IEEE ISBI}, pp.~1650--1654, 2021.
 
 \bibitem{vqarad}
 J.~J.~Lau, S.~Gayen, A.~Ben~Abacha, and D.~Demner-Fushman,
-``A Dataset of Clinically Generated Visual Questions and Answers about Radiology
-Images,''
+``A Dataset of Clinically Generated Visual Questions and Answers about Radiology Images,''
 \textit{Scientific Data}, vol.~5, no.~1, pp.~1--10, 2018.
 
 \bibitem{imisnet}
@@ -1247,8 +1118,7 @@ in \textit{Proc.\ IEEE/CVF CVPR}, pp.~20841--20851, 2025.
 
 \bibitem{qwen3vl}
 S.~Bai, Y.~Cai, R.~Chen et al.,
-``Qwen3-VL Technical Report,''
-\textit{arXiv preprint arXiv:2511.21631}, 2025.
+``Qwen3-VL Technical Report,'' \textit{arXiv preprint arXiv:2511.21631}, 2025.
 
 \bibitem{segr1}
 Z.~You and Z.~Wu,
