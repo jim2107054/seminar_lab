@@ -1,1 +1,1 @@
-# Seminar lab(3-2)
+# Seminar lab
